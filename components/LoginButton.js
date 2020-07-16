@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import colors from "../config/colors";
 import Icon from "./Icon";
 
-function LoginButton({ style, iconSize, title, onPress, iconName, iconColor }) {
+function LoginButton({ iconSize, iconColor, iconName, onPress, title }) {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
       <Text style={styles.text}> {title} </Text>

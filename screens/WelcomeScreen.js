@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View } from "react-native";
 import LoginButton from "../components/LoginButton";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
 
 export default class WelcomeScreen extends Component {
-  render() {
+  home = (params) => {
+    console.log("aye");
     const { navigation } = this.props;
+    navigation.navigate("Home", { level: 1, name: "oppong" });
+  };
+
+  render() {
     return (
       <Screen style={styles.mainContainer}>
         <View style={styles.titleContainer}>
@@ -19,8 +24,14 @@ export default class WelcomeScreen extends Component {
             title="Login With"
             iconName="facebook"
             iconColor={colors.facebook}
+            onPress={this.home}
           />
-          <LoginButton title="Login With" iconName="google" />
+
+          <LoginButton
+            title="Login With"
+            iconName="google"
+            iconColor={colors.white}
+          />
         </View>
       </Screen>
     );
