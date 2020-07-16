@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import HomeStack from "./routes/HomeStack";
+import TabNavigate from "./routes/TabNavigate";
 
 export default function App() {
   return <HomeStack />;

@@ -6,8 +6,26 @@ import Header from "../components/Header";
 import React from "react";
 import colors from "../config/colors";
 import AccountsScreen from "../screens/AccountsScreen";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import TransferScreen from "../screens/TransferScreen";
+import MoreScreen from "../screens/MoreScreen";
 
-const screens = {
+const tabScreens = {
+  Home: {
+    screen: HomeScreen,
+  },
+
+  Transfer: {
+    screen: TransferScreen,
+  },
+
+  More: {
+    screen: MoreScreen,
+  },
+};
+const Tabs = createBottomTabNavigator(tabScreens);
+
+const stackScreens = {
   Welcome: {
     screen: WelcomeScreen,
     navigationOptions: {
@@ -15,23 +33,15 @@ const screens = {
     },
   },
   Home: {
-    screen: HomeScreen,
+    screen: Tabs,
+    gesturesEnabled: false,
     navigationOptions: {
       headerShown: false,
-    },
-  },
-
-  Accounts: {
-    screen: AccountsScreen,
-    navigationOptions: {
-      headerTitle: () => <Header title={"Home"} />,
-      headerStyle: {
-        backgroundColor: colors.primary,
-      },
+      gestureEnabled: false,
     },
   },
 };
 
-const Nav = createStackNavigator(screens);
+const Nav = createStackNavigator(stackScreens);
 
 export default createAppContainer(Nav);
