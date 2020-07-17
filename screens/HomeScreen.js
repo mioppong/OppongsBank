@@ -16,7 +16,7 @@ export default class HomeScreen extends Component {
     return (
       <Screen style={styles.container}>
         <View style={{ backgroundColor: "blue" }}>
-          <TitleText title="Bank Oppong" />
+          <TitleText title="Home" />
         </View>
 
         <View
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   container: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     flex: 1,
     alignItems: "center",
   },

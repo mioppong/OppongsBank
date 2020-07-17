@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
   accountTypeText: {
     fontSize: 20,
-    color: colors.mediumGray,
+    color: colors.fifth,
     textAlign: "center",
   },
   balanceContainer: {
@@ -32,18 +32,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   balanceText: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
-    color: colors.third,
+    color: colors.fourth,
   },
 
   container: {
-    width: 200,
-    height: 120,
+    width: 180,
+    height: 108,
     backgroundColor: colors.primary,
-
     marginTop: 20,
-    borderRadius: 20,
+    borderRadius: 15,
+    borderColor: colors.fifth,
+    padding: 10,
+    borderWidth: 1,
   },
 });

@@ -9,6 +9,9 @@ import AccountsScreen from "../screens/AccountsScreen";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import TransferScreen from "../screens/TransferScreen";
 import MoreScreen from "../screens/MoreScreen";
+import Icon from "../components/Icon";
+
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
 const accScreens = {
   Home: {
@@ -30,6 +33,10 @@ const insideAccounts = createStackNavigator(accScreens);
 const tabScreens = {
   Home: {
     screen: insideAccounts,
+    navigationOptions: {
+      tabBarLabel: "Test",
+      tabBarIcon: ({ tintColor }) => <Icon name="home" iconColor="blue" />,
+    },
   },
 
   Transfer: {
@@ -40,7 +47,12 @@ const tabScreens = {
     screen: MoreScreen,
   },
 };
-const Tabs = createBottomTabNavigator(tabScreens);
+const Tabs = createBottomTabNavigator(tabScreens, {
+  tabBarOptions: {
+    activeTintColor: "red",
+    inactiveTintColor: "blue",
+  },
+});
 
 const stackScreens = {
   Welcome: {

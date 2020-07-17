@@ -23,6 +23,7 @@ export default class WelcomeScreen extends Component {
           <LoginButton
             title="Login With"
             iconName="facebook"
+            buttonColor={colors.third}
             iconColor={colors.facebook}
             onPress={this.home}
           />
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   },
 
   mainContainer: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
