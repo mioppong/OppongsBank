@@ -10,9 +10,26 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import TransferScreen from "../screens/TransferScreen";
 import MoreScreen from "../screens/MoreScreen";
 
-const tabScreens = {
+const accScreens = {
   Home: {
     screen: HomeScreen,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Accounts: {
+    screen: AccountsScreen,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+};
+
+const insideAccounts = createStackNavigator(accScreens);
+
+const tabScreens = {
+  Home: {
+    screen: insideAccounts,
   },
 
   Transfer: {
@@ -38,6 +55,9 @@ const stackScreens = {
     navigationOptions: {
       headerShown: false,
       gestureEnabled: false,
+    },
+    Accounts: {
+      screen: AccountsScreen,
     },
   },
 };
