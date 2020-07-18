@@ -10,7 +10,6 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import TransferScreen from "../screens/TransferScreen";
 import MoreScreen from "../screens/MoreScreen";
 import Icon from "../components/Icon";
-
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
 const accScreens = {
@@ -47,11 +46,8 @@ const tabScreens = {
     screen: MoreScreen,
   },
 };
-const Tabs = createBottomTabNavigator(tabScreens, {
-  tabBarOptions: {
-    activeTintColor: "red",
-    inactiveTintColor: "blue",
-  },
+const Tabs = createMaterialBottomTabNavigator(tabScreens, {
+  shifting: true,
 });
 
 const stackScreens = {
