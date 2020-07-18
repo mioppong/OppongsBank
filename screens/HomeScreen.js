@@ -15,13 +15,12 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <Screen style={styles.container}>
-        <View style={{ backgroundColor: "blue" }}>
+        <View style={{ alignItems: "center" }}>
           <TitleText title="Home" />
         </View>
 
         <View
           style={{
-            backgroundColor: "green",
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -45,7 +44,6 @@ export default class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   bankSummaryContainer: {
-    backgroundColor: "red",
     justifyContent: "center",
     alignItems: "center",
   },

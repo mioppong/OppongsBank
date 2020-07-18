@@ -2,19 +2,28 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 
+//this component is right below the credit card component
+//eventually we want to connect this to a backend which summarizes your account balance
 export default function BankSummaryComponent({
   accountType,
   balance,
   onPress,
 }) {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity style={styles.container}>
       <View>
-        <Text children={accountType} style={styles.accountTypeText} />
+        <Text style={{ color: colors.fifth }}> You Have</Text>
+        <Text style={{ textAlign: "center", margin: 10, color: colors.fourth }}>
+          100
+        </Text>
       </View>
 
-      <View style={styles.balanceContainer}>
-        <Text style={styles.balanceText} children={balance} />
+      <View style={styles.lineSeparator} />
+      <View>
+        <Text style={{ color: colors.fifth }}> You Owe</Text>
+        <Text style={{ textAlign: "center", margin: 10, color: colors.fourth }}>
+          100
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -46,11 +55,19 @@ const styles = StyleSheet.create({
   container: {
     width: 280,
     height: 100,
+    padding: 20,
     backgroundColor: colors.primary,
-
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: 20,
     borderRadius: 20,
     borderWidth: 1,
     borderColor: colors.fifth,
+  },
+  lineSeparator: {
+    width: 2,
+    height: 60,
+    borderRadius: 10,
+    backgroundColor: colors.mediumGray,
   },
 });
