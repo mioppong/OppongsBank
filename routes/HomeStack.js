@@ -33,21 +33,41 @@ const tabScreens = {
   Home: {
     screen: insideAccounts,
     navigationOptions: {
-      tabBarLabel: "Test",
-      tabBarIcon: ({ tintColor }) => <Icon name="home" iconColor="blue" />,
+      tabBarLabel: " ",
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="home" size={50} iconColor={tintColor} />
+      ),
     },
   },
 
   Transfer: {
     screen: TransferScreen,
+    navigationOptions: {
+      tabBarLabel: " ",
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="bank-transfer" size={55} iconColor={tintColor} />
+      ),
+    },
   },
 
   More: {
     screen: MoreScreen,
+    navigationOptions: {
+      tabBarLabel: " ",
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="dots-horizontal" size={50} iconColor={tintColor} />
+      ),
+    },
   },
 };
 const Tabs = createMaterialBottomTabNavigator(tabScreens, {
   shifting: true,
+  activeColor: colors.fifth,
+  barStyle: {
+    backgroundColor: colors.primary,
+    borderWidth: 1,
+    borderTopColor: colors.fifth,
+  },
 });
 
 const stackScreens = {
