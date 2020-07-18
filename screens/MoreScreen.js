@@ -8,11 +8,10 @@ export default class MoreScreen extends Component {
   render() {
     return (
       <Screen style={styles.container}>
-        <TitleText title="More" />
-
-        <ScrollView>
-          <Text style={{ fontSize: 30 }}> This is the transfer screen </Text>
-        </ScrollView>
+        <View style={{ marginLeft: 40 }}>
+          <TitleText title="Home" />
+        </View>
+        <ScrollView></ScrollView>
       </Screen>
     );
   }
@@ -21,6 +20,5 @@ export default class MoreScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.primary,
-    alignItems: "center",
   },
 });
