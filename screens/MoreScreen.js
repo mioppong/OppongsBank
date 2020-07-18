@@ -9,7 +9,7 @@ export default class MoreScreen extends Component {
     return (
       <Screen style={styles.container}>
         <View style={{ marginLeft: 40 }}>
-          <TitleText title="Home" />
+          <TitleText title="More" />
         </View>
         <ScrollView></ScrollView>
       </Screen>
