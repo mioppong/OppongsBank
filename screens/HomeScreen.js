@@ -15,11 +15,10 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <Screen style={styles.container}>
-        <ScrollView>
-          <View style={{ alignItems: "center" }}>
-            <TitleText title="Home" />
-          </View>
-
+        <View style={{ marginLeft: 40 }}>
+          <TitleText title="Home" />
+        </View>
+        <ScrollView style={{ flex: 1 }}>
           <View
             style={{
               justifyContent: "center",
