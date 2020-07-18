@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, Button, View } from "react-native";
+import { Text, StyleSheet, Button, View, ScrollView } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
@@ -15,28 +15,41 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <Screen style={styles.container}>
-        <View style={{ alignItems: "center" }}>
-          <TitleText title="Home" />
-        </View>
+        <ScrollView>
+          <View style={{ alignItems: "center" }}>
+            <TitleText title="Home" />
+          </View>
 
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <AccountsCard
-            accountType="Checking"
-            balance="20.12"
-            onPress={() => this.accountPressedHandler("Accounts")}
-          />
-          <AccountsCard accountType="Savings" balance="290.9" />
-          <AccountsCard accountType="Credit Card" balance="290.00" />
-        </View>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <AccountsCard
+              accountType="Checking"
+              balance="20.12"
+              onPress={() => this.accountPressedHandler("Accounts")}
+            />
 
-        <View style={styles.bankSummaryContainer}>
-          <BankSummaryComponent />
-        </View>
+            <AccountsCard
+              accountType="Checking"
+              balance="20.12"
+              onPress={() => this.accountPressedHandler("Accounts")}
+            />
+            <AccountsCard
+              accountType="Checking"
+              balance="20.12"
+              onPress={() => this.accountPressedHandler("Accounts")}
+            />
+            <AccountsCard accountType="Savings" balance="290.9" />
+            <AccountsCard accountType="Credit Card" balance="290.00" />
+          </View>
+
+          <View style={styles.bankSummaryContainer}>
+            <BankSummaryComponent />
+          </View>
+        </ScrollView>
       </Screen>
     );
   }
@@ -50,6 +63,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.primary,
     flex: 1,
-    alignItems: "center",
+    //alignItems: "center",
   },
 });
