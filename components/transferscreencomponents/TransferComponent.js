@@ -12,7 +12,9 @@ export default function TransferComponent() {
 const styles = StyleSheet.create({
   container: {
     width: "80%",
-    height: 100,
+    height: 200,
     backgroundColor: "red",
+    borderRadius: 20,
+    marginVertical: 10,
   },
 });

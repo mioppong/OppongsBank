@@ -3,7 +3,9 @@ import { Text, StyleSheet, View, ScrollView } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
-import TransferComponent from "../components/TransferComponent";
+import TransferComponent from "../components/transferscreencomponents/TransferComponent";
+import Amount from "../components/transferscreencomponents/Amount";
+import AppButton from "../components/AppButton";
 
 export default class TransferScreen extends Component {
   render() {
@@ -13,7 +15,18 @@ export default class TransferScreen extends Component {
           <TitleText title="Transfer" />
         </View>
         <ScrollView>
-          <TransferComponent />
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: "blue",
+              alignItems: "center",
+              marginVertical: 10,
+            }}
+          >
+            <TransferComponent />
+            <Amount />
+            <AppButton />
+          </View>
         </ScrollView>
       </Screen>
     );
