@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     width: "80%",
     height: 80,
     backgroundColor: "green",
-    marginVertical: 10,
     borderRadius: 15,
   },
 });

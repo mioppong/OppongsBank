@@ -26,18 +26,18 @@ export default class HomeScreen extends Component {
             }}
           >
             <AccountsCard
-              accountType="Checking"
+              accountType="Checking1"
               balance="20.12"
               onPress={() => this.accountPressedHandler("Accounts")}
             />
 
             <AccountsCard
-              accountType="Checking"
+              accountType="Checking Account 2"
               balance="20.12"
               onPress={() => this.accountPressedHandler("Accounts")}
             />
             <AccountsCard
-              accountType="Checking"
+              accountType="GIC"
               balance="20.12"
               onPress={() => this.accountPressedHandler("Accounts")}
             />
