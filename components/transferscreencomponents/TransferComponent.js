@@ -5,7 +5,14 @@ import { color } from "react-native-reanimated";
 import AccountPicker from "./AccountPicker";
 
 export default function TransferComponent() {
-  const [selectedValue, setSelectedValue] = useState("java");
+  const [selectedAccount, setSelectedAccount] = useState("java");
+  const allAccounts = [
+    { label: "Checking 1", id: 1 },
+    { label: "Checking 2", id: 2 },
+    { label: "Savings", id: 3 },
+    { label: "GIC", id: 4 },
+    { label: "Credit Card", id: 5 },
+  ];
 
   return (
     <View style={styles.container}>
@@ -21,7 +28,13 @@ export default function TransferComponent() {
             borderRadius: 10,
           }}
         >
-          <AccountPicker placeholder="Account" icon="bank-transfer-out" />
+          <AccountPicker
+            selectedItem={selectedAccount}
+            onSelectItem={(item) => setSelectedAccount(item)}
+            items={allAccounts}
+            placeholder="Account"
+            icon="bank-transfer-out"
+          />
         </View>
       </View>
 
@@ -48,7 +61,13 @@ export default function TransferComponent() {
             borderRadius: 10,
           }}
         >
-          <AccountPicker placeholder="Account" icon="bank-transfer-in" />
+          <AccountPicker
+            selectedItem={selectedAccount}
+            onSelectItem={(item) => setSelectedAccount(item)}
+            items={allAccounts}
+            placeholder="Account"
+            icon="bank-transfer-in"
+          />
         </View>
       </View>
     </View>

@@ -5,6 +5,7 @@ import colors from "../config/colors";
 import TitleText from "../components/TitleText";
 import AccountsCard from "../components/AccountsCard";
 import BankSummaryComponent from "../components/BankSummaryComponent";
+import PickerItem from "../components/transferscreencomponents/PickerItem";
 
 export default class HomeScreen extends Component {
   accountPressedHandler = (args) => {
