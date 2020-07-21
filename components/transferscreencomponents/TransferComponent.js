@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   container: {
-    width: "80%",
+    width: "90%",
     height: 200,
     borderRadius: 20,
     marginVertical: 10,
