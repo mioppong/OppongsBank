@@ -2,11 +2,21 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 
-export default function AccountsCard({ accountType, balance, onPress }) {
+export default function AccountsCard({
+  accountType,
+  balance,
+  onPress,
+  accountNumber,
+}) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View>
         <Text children={accountType} style={styles.accountTypeText} />
+        <Text
+          style={{ textAlign: "center", color: colors.fourth, fontSize: 12 }}
+        >
+          account # - {accountNumber}{" "}
+        </Text>
       </View>
 
       <View style={styles.balanceContainer}>

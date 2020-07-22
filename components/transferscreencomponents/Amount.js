@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     width: "100%",
     borderBottomWidth: 1,
     borderColor: colors.fifth,
+    color: colors.fourth,
     fontSize: 30,
     height: 40,
   },

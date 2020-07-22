@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, Button, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
 import AccountsCard from "../components/AccountsCard";
 import BankSummaryComponent from "../components/BankSummaryComponent";
-import PickerItem from "../components/transferscreencomponents/PickerItem";
 
 export default class HomeScreen extends Component {
   accountPressedHandler = (args) => {
@@ -27,23 +26,34 @@ export default class HomeScreen extends Component {
             }}
           >
             <AccountsCard
-              accountType="Checking1"
+              accountType="Checking 1"
               balance="20.12"
+              accountNumber="1"
               onPress={() => this.accountPressedHandler("Accounts")}
             />
 
             <AccountsCard
-              accountType="Checking Account 2"
+              accountType="Checking 2"
               balance="20.12"
+              accountNumber="2"
               onPress={() => this.accountPressedHandler("Accounts")}
+            />
+            <AccountsCard
+              accountNumber="3"
+              accountType="Savings"
+              balance="290.9"
             />
             <AccountsCard
               accountType="GIC"
               balance="20.12"
+              accountNumber="4"
               onPress={() => this.accountPressedHandler("Accounts")}
             />
-            <AccountsCard accountType="Savings" balance="290.9" />
-            <AccountsCard accountType="Credit Card" balance="290.00" />
+            <AccountsCard
+              accountNumber="5"
+              accountType="Credit Card"
+              balance="290.00"
+            />
           </View>
 
           <View style={styles.bankSummaryContainer}>

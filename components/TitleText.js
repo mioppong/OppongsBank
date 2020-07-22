@@ -15,5 +15,7 @@ const styles = StyleSheet.create({
     color: colors.third,
     fontSize: 50,
     fontWeight: "bold",
+    textDecorationLine: "underline",
+    textDecorationColor: colors.fifth,
   },
 });
