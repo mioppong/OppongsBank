@@ -20,17 +20,10 @@ export default class TransferScreen extends Component {
           <TitleText title="Transfer" />
         </View>
         <ScrollView>
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: "blue",
-              alignItems: "center",
-              marginVertical: 10,
-            }}
-          >
+          <View style={styles.insideContainer}>
             <TransferComponent />
             <Amount />
-            <AppButton />
+            <AppButton title="Transfer" />
           </View>
         </ScrollView>
       </Screen>
@@ -41,5 +34,11 @@ export default class TransferScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.primary,
+  },
+  insideContainer: {
+    flex: 1,
+    //backgroundColor: colors.third,
+    alignItems: "center",
+    marginVertical: 10,
   },
 });

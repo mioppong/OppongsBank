@@ -5,7 +5,9 @@ import { color } from "react-native-reanimated";
 import AccountPicker from "./AccountPicker";
 
 export default function TransferComponent() {
-  const [selectedAccount, setSelectedAccount] = useState("java");
+  const [selectedAccount1, setSelectedAccount1] = useState();
+  const [selectedAccount2, setSelectedAccount2] = useState();
+
   const allAccounts = [
     { label: "Checking 1", id: 1 },
     { label: "Checking 2", id: 2 },
@@ -18,19 +20,10 @@ export default function TransferComponent() {
     <View style={styles.container}>
       <View style={styles.transferFrom}>
         <Text style={styles.componentTitle}>Transfer From</Text>
-        <View
-          style={{
-            marginTop: 60,
-            width: "90%",
-            height: 40,
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 10,
-          }}
-        >
+        <View style={styles.containerChooseAccount}>
           <AccountPicker
-            selectedItem={selectedAccount}
-            onSelectItem={(item) => setSelectedAccount(item)}
+            selectedItem={selectedAccount1}
+            onSelectItem={(item) => setSelectedAccount1(item)}
             items={allAccounts}
             placeholder="Account"
             icon="bank-transfer-out"
@@ -38,32 +31,15 @@ export default function TransferComponent() {
         </View>
       </View>
 
-      <View
-        style={{
-          width: 2,
-          height: 90,
-          backgroundColor: colors.third,
-          marginTop: 80,
-          borderRadius: 10,
-        }}
-      />
+      <View style={styles.lineInMiddle} />
 
       <View style={styles.transferFrom}>
         <Text style={styles.componentTitle}>Transfer To</Text>
 
-        <View
-          style={{
-            marginTop: 60,
-            width: "90%",
-            height: 40,
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 10,
-          }}
-        >
+        <View style={styles.containerChooseAccount}>
           <AccountPicker
-            selectedItem={selectedAccount}
-            onSelectItem={(item) => setSelectedAccount(item)}
+            selectedItem={selectedAccount2}
+            onSelectItem={(item) => setSelectedAccount2(item)}
             items={allAccounts}
             placeholder="Account"
             icon="bank-transfer-in"
@@ -87,15 +63,30 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginVertical: 10,
     flexDirection: "row",
-    borderWidth: 4,
-    borderColor: "green",
+    borderWidth: 1,
+    borderColor: colors.fifth,
+  },
+  containerChooseAccount: {
+    marginTop: 60,
+    width: "90%",
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+  },
+  lineInMiddle: {
+    width: 1,
+    height: 90,
+    backgroundColor: colors.fifth,
+    marginTop: 80,
+    borderRadius: 10,
   },
   transferFrom: {
     width: "50%",
     height: "20%",
     marginVertical: 10,
     alignItems: "center",
-    borderWidth: 2,
-    borderColor: "red",
+    //borderWidth: 2,
+    //    borderColor: "red",
   },
 });

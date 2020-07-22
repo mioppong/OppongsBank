@@ -13,6 +13,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Button } from "react-native-paper";
 import Screen from "../Screen";
 import PickerItem from "./PickerItem";
+import { BlurView } from "expo-blur";
+import AppButton from "../AppButton";
 
 export default function AccountPicker({
   icon,
@@ -28,16 +30,18 @@ export default function AccountPicker({
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
-          <Icon name={icon} iconSize={iconSize} />
+          <Icon name={icon} iconColor={colors.primary} iconSize={iconSize} />
           <Text style={{ flex: 1 }}>
             {selectedItem ? selectedItem.label : placeholder}
           </Text>
-          <Icon name="chevron-down" iconSize={30} />
+          <Icon name="chevron-down" iconColor={colors.primary} iconSize={30} />
         </View>
       </TouchableWithoutFeedback>
 
+      {/*------------------------------------------MODAL SCREEN------------------------------------------*/}
+
       <Modal transparent={true} visible={modalVisible} animationType="fade">
-        <View style={styles.modalTransparentBackground}>
+        <BlurView intensity={60} style={styles.modalTransparentBackground}>
           <View style={styles.insideScreenModal}>
             <FlatList
               data={items}
@@ -52,14 +56,15 @@ export default function AccountPicker({
                 />
               )}
             />
-            <Button
-              title="Close"
-              style={{ backgroundColor: "blue" }}
+            <AppButton
+              iconName="close"
+              style={{ backgroundColor: colors.fifth }}
               onPress={() => setModalVisible(false)}
             />
           </View>
-        </View>
+        </BlurView>
       </Modal>
+      {/*------------------------------------------MODAL SCREEN------------------------------------------*/}
     </>
   );
 }
@@ -73,18 +78,23 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 15,
 
-    backgroundColor: colors.mediumGray,
+    backgroundColor: colors.fifth,
   },
   insideScreenModal: {
     width: "80%",
     height: 400,
-    borderRadius: 10,
-    backgroundColor: "yellow",
+    borderRadius: 50,
+    //backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
+    opacity: 10,
+    shadowColor: "black",
+    shadowOffset: { width: 2, height: 2 },
+    shadowRadius: 10,
+    shadowOpacity: 0.1,
+    elevation: 10,
   },
   modalTransparentBackground: {
-    backgroundColor: "#1113333a",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",

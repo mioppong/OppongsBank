@@ -6,8 +6,10 @@ import Icon from "./Icon";
 function AppButton({ style, iconSize, title, onPress, iconName }) {
   return (
     <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
-      <Icon size={iconSize} name={iconName} iconColor={colors.fourth} />
-      <Text> {title} </Text>
+      {iconName && (
+        <Icon size={iconSize} name={iconName} iconColor={colors.fourth} />
+      )}
+      {title && <Text style={[styles.text]}> {title} </Text>}
     </TouchableOpacity>
   );
 }
@@ -22,5 +24,13 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     alignItems: "center",
     justifyContent: "center",
+    borderWidth: 1,
+
+    borderColor: colors.fifth,
+  },
+  text: {
+    textAlign: "center",
+    fontSize: 20,
+    color: colors.fourth,
   },
 });
