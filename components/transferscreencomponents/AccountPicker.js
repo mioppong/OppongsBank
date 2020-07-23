@@ -41,7 +41,7 @@ export default function AccountPicker({
       {/*------------------------------------------MODAL SCREEN------------------------------------------*/}
 
       <Modal transparent={true} visible={modalVisible} animationType="fade">
-        <BlurView intensity={60} style={styles.modalTransparentBackground}>
+        <BlurView intensity={50} style={styles.modalTransparentBackground}>
           <View style={styles.insideScreenModal}>
             <FlatList
               data={items}
