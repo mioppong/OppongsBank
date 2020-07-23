@@ -32,6 +32,7 @@ export default class WelcomeScreen extends Component {
             title="Login With"
             iconName="google"
             iconColor={colors.white}
+            onPress={this.home}
           />
         </View>
       </Screen>

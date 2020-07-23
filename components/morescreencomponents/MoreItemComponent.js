@@ -5,8 +5,9 @@ import { BlurView } from "expo-blur";
 import AppButton from "../AppButton";
 import colors from "../../config/colors";
 import { color } from "react-native-reanimated";
+import TitleText from "../TitleText";
 
-export default function MoreItemComponent({ title, body }) {
+export default function MoreItemComponent({ title, content }) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -18,7 +19,9 @@ export default function MoreItemComponent({ title, body }) {
       </TouchableOpacity>
       <Modal transparent={true} visible={modalVisible} animationType="fade">
         <BlurView intensity={50} style={styles.modalTransparentBackground}>
-          <View style={styles.insideBlurView}></View>
+          <View style={styles.insideBlurView}>
+            <Text style={styles.maintContentText}>{content}</Text>
+          </View>
 
           <AppButton
             iconName="close"
@@ -33,7 +36,7 @@ export default function MoreItemComponent({ title, body }) {
 
 const styles = StyleSheet.create({
   containerOnMoreScreen: {
-    width: "60%",
+    width: "70%",
     backgroundColor: colors.primary,
     marginVertical: 10,
     height: 50,
@@ -54,6 +57,12 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowOpacity: 0.5,
     elevation: 10,
+    padding: 10,
+  },
+  maintContentText: {
+    color: colors.fourth,
+    fontSize: 20,
+    textTransform: "capitalize",
   },
 
   modalTransparentBackground: {

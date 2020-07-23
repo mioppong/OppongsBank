@@ -9,6 +9,24 @@ import MoreItemComponent from "../components/morescreencomponents/MoreItemCompon
 
 export default class MoreScreen extends Component {
   render() {
+    const stuffForMoreScreen = [
+      {
+        title: "This is Not a Real Bank",
+        content:
+          "This app was made for the purpose of teaching and young people, how to use a bank and what you can do with it, essentially education",
+      },
+      {
+        title: "Promotiion - Jaigoh",
+        content:
+          "This is a promo for my boy Jaigoh, who makes music, Search SoundCloud 'Jaigoh'",
+      },
+      {
+        title: "Promotiion - Monica Guzman",
+        content:
+          "This is a promo for my amiga Monica Guzman, who makes music, Search on Apple Music, SoundCloud, Spotify and Youtube 'Monica Guzman'",
+      },
+    ];
+
     const { navigation } = this.props;
     return (
       <Screen style={styles.container}>
@@ -19,10 +37,20 @@ export default class MoreScreen extends Component {
           style={{ backgroundColor: "" }}
           contentContainerStyle={{ alignItems: "center" }}
         >
-          <MoreItemComponent title="This is Not a real Bank" />
-          <MoreItemComponent title="This is Not a real Bank" />
-          <MoreItemComponent />
-          <MoreItemComponent />
+          <MoreItemComponent
+            title={stuffForMoreScreen[0].title}
+            content={stuffForMoreScreen[0].content}
+          />
+
+          <MoreItemComponent
+            title={stuffForMoreScreen[1].title}
+            content={stuffForMoreScreen[1].content}
+          />
+
+          <MoreItemComponent
+            title={stuffForMoreScreen[2].title}
+            content={stuffForMoreScreen[2].content}
+          />
 
           <AppButton
             iconName="logout"
