@@ -9,7 +9,7 @@ export default class AccountsScreen extends Component {
   render() {
     const { navigation } = this.props;
 
-    console.log(navigation);
+    console.log(navigation[0]);
 
     return (
       <View>

@@ -5,14 +5,24 @@ import colors from "../config/colors";
 import TitleText from "../components/TitleText";
 import AccountsCard from "../components/AccountsCard";
 import BankSummaryComponent from "../components/BankSummaryComponent";
+import { connect } from "react-redux";
 
-export default class HomeScreen extends Component {
+class HomeScreen extends Component {
   accountPressedHandler = (args) => {
     const { navigation } = this.props;
-    navigation.navigate(args, { level: 1, name: "oppong" });
+
+    switch (args) {
+      case 1:
+        navigation.navigate("Accounts", { level: this.props.checking1 });
+      case 2:
+        navigation.navigate("Accounts", { level: this.props.checking2 });
+      case 3:
+        navigation.navigate("Accounts", { level: this.props.savings });
+    }
   };
 
   render() {
+    console.log(this.props.checking1);
     return (
       <Screen style={styles.container}>
         <View style={{ marginLeft: 40 }}>
@@ -29,30 +39,32 @@ export default class HomeScreen extends Component {
               accountType="Checking 1"
               balance="20.12"
               accountNumber="1"
-              onPress={() => this.accountPressedHandler("Accounts")}
+              onPress={() => this.accountPressedHandler(1)}
             />
 
             <AccountsCard
               accountType="Checking 2"
               balance="20.12"
               accountNumber="2"
-              onPress={() => this.accountPressedHandler("Accounts")}
+              onPress={() => this.accountPressedHandler(2)}
             />
             <AccountsCard
               accountNumber="3"
               accountType="Savings"
               balance="290.9"
+              onPress={() => this.accountPressedHandler(3)}
             />
             <AccountsCard
               accountType="GIC"
               balance="20.12"
               accountNumber="4"
-              onPress={() => this.accountPressedHandler("Accounts")}
+              onPress={() => this.accountPressedHandler(4)}
             />
             <AccountsCard
               accountNumber="5"
               accountType="Credit Card"
               balance="290.00"
+              onPress={() => this.accountPressedHandler(5)}
             />
           </View>
 
@@ -64,6 +76,14 @@ export default class HomeScreen extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    checking1: state.checking1,
+  };
+};
+
+export default connect(mapStateToProps)(HomeScreen);
 
 const styles = StyleSheet.create({
   bankSummaryContainer: {
