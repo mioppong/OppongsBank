@@ -13,16 +13,15 @@ class HomeScreen extends Component {
 
     switch (args) {
       case 1:
-        navigation.navigate("Accounts", { level: this.props.checking1 });
-      case 2:
-        navigation.navigate("Accounts", { level: this.props.checking2 });
-      case 3:
-        navigation.navigate("Accounts", { level: this.props.savings });
+        navigation.navigate("Accounts", {
+          balance: this.props.checking1.balance,
+          transactions: this.props.checking1.transactions,
+        });
     }
   };
 
   render() {
-    console.log(this.props.checking1);
+    //console.log(this.props.checking1);
     return (
       <Screen style={styles.container}>
         <View style={{ marginLeft: 40 }}>

@@ -1,22 +1,42 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, FlatList } from "react-native";
+import { connect } from "react-redux";
+import Screen from "../components/Screen";
 
-export default class AccountsScreen extends Component {
+class AccountsScreen extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const { navigation } = this.props;
-
-    console.log(navigation[0]);
+    const { params } = this.props.navigation.state;
+    console.log(params);
 
     return (
-      <View>
-        <Text> This is AccountsScreen </Text>
-      </View>
+      <Screen>
+        <Text> This the balance is {params.balance} </Text>
+
+        <FlatList
+          data={params.transactions}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Text>
+              {item.from} from {item.to} {item.amount}
+            </Text>
+          )}
+        />
+      </Screen>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    checking1: state.checking1,
+    checking2: state.checking2,
+    savings: state.savings,
+  };
+};
+export default AccountsScreen;
 
 const styles = StyleSheet.create({});
