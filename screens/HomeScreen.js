@@ -14,6 +14,7 @@ class HomeScreen extends Component {
     switch (args) {
       case 1:
         navigation.navigate("Accounts", {
+          name: this.props.checking1.name,
           balance: this.props.checking1.balance,
           transactions: this.props.checking1.transactions,
         });
