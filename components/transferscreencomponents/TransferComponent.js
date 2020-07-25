@@ -4,7 +4,7 @@ import colors from "../../config/colors";
 import { color } from "react-native-reanimated";
 import AccountPicker from "./AccountPicker";
 
-export default function TransferComponent() {
+export default function TransferComponent(props) {
   const [selectedAccount1, setSelectedAccount1] = useState();
   const [selectedAccount2, setSelectedAccount2] = useState();
 
@@ -23,7 +23,10 @@ export default function TransferComponent() {
         <View style={styles.containerChooseAccount}>
           <AccountPicker
             selectedItem={selectedAccount1}
-            onSelectItem={(item) => setSelectedAccount1(item)}
+            onSelectItem={(item) => {
+              setSelectedAccount1(item);
+              props.from(item);
+            }}
             items={allAccounts}
             placeholder="Account"
             icon="bank-transfer-out"
@@ -39,7 +42,10 @@ export default function TransferComponent() {
         <View style={styles.containerChooseAccount}>
           <AccountPicker
             selectedItem={selectedAccount2}
-            onSelectItem={(item) => setSelectedAccount2(item)}
+            onSelectItem={(item) => {
+              setSelectedAccount2(item);
+              props.to(item);
+            }}
             items={allAccounts}
             placeholder="Account"
             icon="bank-transfer-in"

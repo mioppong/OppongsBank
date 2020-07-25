@@ -9,6 +9,14 @@ import AppButton from "../components/AppButton";
 import AccountPicker from "../components/transferscreencomponents/AccountPicker";
 
 export default class TransferScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.from = "";
+    this.to = "";
+    this.amount = "";
+  }
+
   render() {
     return (
       <Screen style={styles.container}>
@@ -21,9 +29,17 @@ export default class TransferScreen extends Component {
         </View>
         <ScrollView>
           <View style={styles.insideContainer}>
-            <TransferComponent />
-            <Amount />
-            <AppButton title="Transfer" />
+            <TransferComponent
+              from={(item) => (this.from = item)}
+              to={(item) => (this.to = item)}
+            />
+            <Amount getAmount={(amount) => (this.amount = amount)} />
+            <AppButton
+              title="Transfer"
+              onPress={() =>
+                console.log(this.from.label, this.to.label, this.amount)
+              }
+            />
           </View>
         </ScrollView>
       </Screen>

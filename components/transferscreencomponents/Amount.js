@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import colors from "../../config/colors";
 import { color } from "react-native-reanimated";
 
-export default function Amount() {
+export default function Amount(props) {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
@@ -11,7 +11,11 @@ export default function Amount() {
       </View>
 
       <View style={styles.textInputContainer}>
-        <TextInput keyboardType="decimal-pad" style={styles.textInput} />
+        <TextInput
+          onChangeText={(event) => props.getAmount(event)}
+          keyboardType="decimal-pad"
+          style={styles.textInput}
+        />
       </View>
     </View>
   );
