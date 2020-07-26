@@ -13,7 +13,6 @@ class AccountsScreen extends Component {
 
   render() {
     const { params } = this.props.navigation.state;
-    console.log(params);
 
     return (
       <Screen style={styles.container}>

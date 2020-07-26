@@ -29,12 +29,13 @@ export default function TransactionItem({ from, to, amount }) {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 40,
+    height: 60,
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 10,
     flex: 1,
     marginVertical: 20,
+    backgroundColor: "red",
   },
   coolLine: {
     width: "80%",

@@ -9,20 +9,24 @@ const initState = {
     ],
   },
   checking2: {
+    id: "2",
     balance: 0,
     name: "checking2",
 
     transactions: [],
   },
   savings: {
+    id: "3",
     balance: 0,
     transactions: [],
   },
   gic: {
+    id: "4",
     balance: 0,
     interestRate: 0,
   },
   creditcard: {
+    id: "5",
     balance: 0,
     capacity: 1000,
     interestRate: 0,
@@ -31,15 +35,13 @@ const initState = {
 };
 
 const rootReducer = (state = initState, action) => {
-  console.log(action);
   const arrayLength = state.checking1.transactions.length;
-
   if (action.type === "ADD_TRANSACTION") {
-    state.checking1.transactions.push({
+    state.checking1.transactions.unshift({
       id: arrayLength + 1 + "",
-      from: "Ghana",
-      to: "gang",
-      amount: 20,
+      from: action.from.label,
+      to: action.to.label,
+      amount: action.amount,
     });
   }
   return state;
