@@ -18,7 +18,7 @@ export default function MoreItemComponent({ title, content }) {
         <Text style={{ color: colors.fourth, fontSize: 20 }}>{title}</Text>
       </TouchableOpacity>
       <Modal transparent={true} visible={modalVisible} animationType="fade">
-        <BlurView intensity={50} style={styles.modalTransparentBackground}>
+        <BlurView intensity={100} style={styles.modalTransparentBackground}>
           <View style={styles.insideBlurView}>
             <Text style={styles.maintContentText}>{content}</Text>
           </View>

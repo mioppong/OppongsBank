@@ -37,12 +37,20 @@ const initState = {
 const rootReducer = (state = initState, action) => {
   const arrayLength = state.checking1.transactions.length;
   if (action.type === "ADD_TRANSACTION") {
-    state.checking1.transactions.unshift({
-      id: arrayLength + 1 + "",
-      from: action.from.label,
-      to: action.to.label,
-      amount: action.amount,
-    });
+    //I STOPPED HERE, REMEMBER THAT, WE NEED LOGIC FOR HOW WERE GOING TO SUBTRACT FROM ACCOUNT, AND ALL DAT AND TRANSACTIONS AND YA
+    //state.checking1.transactions.unshift({
+    // id: arrayLength + 1 + "",
+    //from: action.from.label,
+    //to: action.to.label,
+    //amount: action.amount,
+    //});
+
+    console.log(action.to.id);
+
+    switch (action.to.id) {
+      case value:
+        break;
+    }
   }
   return state;
 };
