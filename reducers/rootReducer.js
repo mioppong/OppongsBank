@@ -1,5 +1,6 @@
 const initState = {
   checking1: {
+    id: "1",
     name: "checking1",
     balance: 0,
     transactions: [
@@ -30,6 +31,17 @@ const initState = {
 };
 
 const rootReducer = (state = initState, action) => {
+  console.log(action);
+  const arrayLength = state.checking1.transactions.length;
+
+  if (action.type === "ADD_TRANSACTION") {
+    state.checking1.transactions.push({
+      id: arrayLength + 1 + "",
+      from: "Ghana",
+      to: "gang",
+      amount: 20,
+    });
+  }
   return state;
 };
 
