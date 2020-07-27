@@ -4,17 +4,13 @@ import colors from "../config/colors";
 
 //this component is right below the credit card component
 //eventually we want to connect this to a backend which summarizes your account balance
-export default function BankSummaryComponent({
-  accountType,
-  balance,
-  onPress,
-}) {
+export default function BankSummaryComponent({ totalHave, totalOwe }) {
   return (
     <TouchableOpacity style={styles.container}>
       <View>
         <Text style={{ color: colors.fifth }}> You Have</Text>
         <Text style={{ textAlign: "center", margin: 10, color: colors.fourth }}>
-          100
+          {totalHave}
         </Text>
       </View>
 
@@ -22,7 +18,7 @@ export default function BankSummaryComponent({
       <View>
         <Text style={{ color: colors.fifth }}> You Owe</Text>
         <Text style={{ textAlign: "center", margin: 10, color: colors.fourth }}>
-          100
+          {totalOwe}
         </Text>
       </View>
     </TouchableOpacity>

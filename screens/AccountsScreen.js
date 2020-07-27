@@ -1,3 +1,5 @@
+//I MADE THIS CLASS TO SHOW ONLY THE CHECKING ACCOUNTS, AND THE SAVINGS ACCOUNT, SINCE THEY'RE SIMILAR
+
 import React, { Component } from "react";
 import { Text, StyleSheet, View, FlatList, Button } from "react-native";
 import Screen from "../components/Screen";

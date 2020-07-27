@@ -2,12 +2,12 @@ const initState = {
   checking1: {
     id: "1",
     name: "checking1",
-    balance: 0,
+    balance: 10,
     transactions: [],
   },
   checking2: {
     id: "2",
-    balance: 0,
+    balance: 100,
     name: "checking2",
 
     transactions: [],
@@ -45,7 +45,7 @@ const rootReducer = (state = initState, action) => {
 
     switch (action.from.id) {
       case 1:
-        state.checking1.balance -= parseInt(action.amount);
+        //state.checking1.balance = parseInt(action.amount);
 
         state.checking1.transactions.unshift({
           id: arrayLength + 1 + "",

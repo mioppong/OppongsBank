@@ -8,6 +8,23 @@ import BankSummaryComponent from "../components/BankSummaryComponent";
 import { connect } from "react-redux";
 
 class HomeScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      totalHave: 0,
+      totalOwe: 0,
+    };
+  }
+
+  //this.setState({
+  //totalHave:
+  // this.props.checking1.balance +
+  //this.props.checking2.balance +
+  // this.props.savings.balance,
+  //totalOwe: 10,
+  //});
+
   accountPressedHandler = (args) => {
     const { navigation } = this.props;
 
@@ -37,7 +54,6 @@ class HomeScreen extends Component {
   };
 
   render() {
-    //console.log(this.props.checking1);
     return (
       <Screen style={styles.container}>
         <View style={{ marginLeft: 40 }}>
@@ -84,7 +100,10 @@ class HomeScreen extends Component {
           </View>
 
           <View style={styles.bankSummaryContainer}>
-            <BankSummaryComponent />
+            <BankSummaryComponent
+              totalHave={this.state.totalHave}
+              totalOwe={this.state.totalOwe}
+            />
           </View>
         </ScrollView>
       </Screen>
@@ -97,6 +116,8 @@ const mapStateToProps = (state) => {
     checking1: state.checking1,
     checking2: state.checking2,
     savings: state.savings,
+    gic: state.gic,
+    creditCard: state.creditCard,
   };
 };
 
