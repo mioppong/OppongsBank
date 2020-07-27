@@ -2,12 +2,12 @@ const initState = {
   checking1: {
     id: "1",
     name: "checking1",
-    balance: 10,
+    balance: 0,
     transactions: [],
   },
   checking2: {
     id: "2",
-    balance: 100,
+    balance: 0,
     name: "checking2",
 
     transactions: [],
@@ -25,7 +25,7 @@ const initState = {
   },
   creditcard: {
     id: "5",
-    balance: 0,
+    balance: 1000,
     capacity: 1000,
     interestRate: 0,
     transactions: [],
@@ -35,17 +35,9 @@ const initState = {
 const rootReducer = (state = initState, action) => {
   const arrayLength = state.checking1.transactions.length;
   if (action.type === "ADD_TRANSACTION") {
-    //I STOPPED HERE, REMEMBER THAT, WE NEED LOGIC FOR HOW WERE GOING TO SUBTRACT FROM ACCOUNT, AND ALL DAT AND TRANSACTIONS AND YA
-    //state.checking1.transactions.unshift({
-    // id: arrayLength + 1 + "",
-    //from: action.from.label,
-    //to: action.to.label,
-    //amount: action.amount,
-    //});
-
     switch (action.from.id) {
       case 1:
-        //state.checking1.balance = parseInt(action.amount);
+        state.checking1.balance -= parseInt(action.amount);
 
         state.checking1.transactions.unshift({
           id: arrayLength + 1 + "",
@@ -53,10 +45,6 @@ const rootReducer = (state = initState, action) => {
           to: action.to.label,
           amount: action.amount,
         });
-
-        console.log("from is checking 1");
-        console.log("balance is", state.checking1.balance);
-        console.log("transaction is", state.checking1.transactions);
 
         break;
 

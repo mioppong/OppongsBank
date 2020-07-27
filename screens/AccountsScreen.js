@@ -24,24 +24,40 @@ class AccountsScreen extends Component {
           <Icon name="keyboard-backspace" size={70} iconColor={colors.fifth} />
         </TouchableOpacity>
 
-        <TitleText title={params.name} style={{ marginLeft: 40 }} />
+        <TitleText
+          title={params.name}
+          style={{ alignSelf: "center", fontSize: 30 }}
+        />
+
+        <TitleText
+          title={"account#: " + params.id}
+          style={{ alignSelf: "center", fontSize: 15, color: colors.fifth }}
+        />
+
         <View style={styles.balanceContainer}>
           <Text style={styles.balanceTitle}>Your Balance:</Text>
           <Text style={styles.balanceText}> $ {params.balance}</Text>
         </View>
 
-        <FlatList
-          style={styles.transactionsContainer}
-          data={params.transactions}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <TransactionItem
-              from={item.from}
-              to={item.to}
-              amount={item.amount}
-            />
-          )}
-        />
+        <View style={styles.transactionsContainer}>
+          <TitleText
+            title={"Transactions: "}
+            style={{ fontSize: 15, color: colors.third }}
+          />
+
+          <FlatList
+            //            style={styles.transactionsContainer}
+            data={params.transactions}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <TransactionItem
+                from={item.from}
+                to={item.to}
+                amount={item.amount}
+              />
+            )}
+          />
+        </View>
       </Screen>
     );
   }
@@ -67,16 +83,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   balanceTitle: {
-    fontSize: 20,
-    color: colors.fourth,
+    fontSize: 15,
+    color: colors.third,
+    fontWeight: "bold",
   },
   container: {
     backgroundColor: colors.primary,
+  },
+  flatListContainer: {
+    backgroundColor: "red",
+    flex: 1,
   },
   transactionsContainer: {
     padding: 20,
     borderRadius: 20,
     borderWidth: 1,
     borderColor: colors.fifth,
+    flex: 1,
   },
 });
