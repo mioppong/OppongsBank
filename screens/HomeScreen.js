@@ -18,6 +18,21 @@ class HomeScreen extends Component {
           balance: this.props.checking1.balance,
           transactions: this.props.checking1.transactions,
         });
+        break;
+      case 2:
+        navigation.navigate("Accounts", {
+          name: this.props.checking2.name,
+          balance: this.props.checking2.balance,
+          transactions: this.props.checking2.transactions,
+        });
+        break;
+      case 3:
+        navigation.navigate("Accounts", {
+          name: this.props.savings.name,
+          balance: this.props.savings.balance,
+          transactions: this.props.savings.transactions,
+        });
+        break;
     }
   };
 
@@ -80,6 +95,8 @@ class HomeScreen extends Component {
 const mapStateToProps = (state) => {
   return {
     checking1: state.checking1,
+    checking2: state.checking2,
+    savings: state.savings,
   };
 };
 

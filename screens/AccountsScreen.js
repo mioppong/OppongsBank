@@ -6,6 +6,8 @@ import TitleText from "../components/TitleText";
 import { color } from "react-native-reanimated";
 import TransactionItem from "../components/accountsscreencomponents/TransactionItem";
 import AppButton from "../components/AppButton";
+import Icon from "../components/Icon";
+import { TouchableOpacity } from "react-native-gesture-handler";
 class AccountsScreen extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,10 @@ class AccountsScreen extends Component {
 
     return (
       <Screen style={styles.container}>
+        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+          <Icon name="keyboard-backspace" size={70} iconColor={colors.fifth} />
+        </TouchableOpacity>
+
         <TitleText title={params.name} style={{ marginLeft: 40 }} />
         <View style={styles.balanceContainer}>
           <Text style={styles.balanceTitle}>Your Balance:</Text>
@@ -33,12 +39,6 @@ class AccountsScreen extends Component {
               amount={item.amount}
             />
           )}
-        />
-
-        <AppButton
-          title="Go Back"
-          onPress={() => this.props.navigation.goBack()}
-          style={{ marginVertical: 20, alignSelf: "center" }}
         />
       </Screen>
     );
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   transactionsContainer: {
-    padding: 30,
+    padding: 20,
     borderRadius: 20,
     borderWidth: 1,
     borderColor: colors.fifth,

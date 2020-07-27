@@ -1,16 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import Screen from "./Screen";
 
-export default function Header({ title }) {
+export default function Header({ title, style }) {
   return (
-    <View style={styles.container}>
+    <Screen style={[styles.container, style]}>
       <Text>{title}</Text>
-    </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    backgroundColor: "red",
   },
 });

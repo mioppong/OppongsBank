@@ -32,10 +32,9 @@ const styles = StyleSheet.create({
     height: 60,
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 10,
+    alignItems: "center",
     flex: 1,
     marginVertical: 20,
-    backgroundColor: "red",
   },
   coolLine: {
     width: "80%",

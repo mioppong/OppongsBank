@@ -11,6 +11,7 @@ import TransferScreen from "../screens/TransferScreen";
 import MoreScreen from "../screens/MoreScreen";
 import Icon from "../components/Icon";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import { View } from "react-native";
 
 const accScreens = {
   Home: {
