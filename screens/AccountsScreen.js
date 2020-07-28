@@ -8,6 +8,7 @@ import {
   FlatList,
   ScrollView,
   Modal,
+  TextInput,
 } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
@@ -18,6 +19,7 @@ import AppButton from "../components/AppButton";
 import Icon from "../components/Icon";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Camera from "../components/Camera";
+import { BlurView } from "expo-blur";
 class AccountsScreen extends Component {
   constructor(props) {
     super(props);
@@ -69,19 +71,35 @@ class AccountsScreen extends Component {
             <Text style={styles.balanceText}> $ {params.balance}</Text>
           </View>
 
-          <AppButton
-            title="Deposit"
-            iconName="camera"
-            style={{
-              height: 95,
-              width: 95,
-              marginVertical: 10,
-              borderRadius: 10,
-              alignSelf: "center",
-            }}
-            iconSize={50}
-            onPress={this.activateCamera}
-          />
+          <View style={{ flexDirection: "row", alignSelf: "center" }}>
+            <AppButton
+              title="Deposit"
+              iconName="cash-register"
+              style={{
+                height: 95,
+                width: 95,
+                marginVertical: 10,
+                borderRadius: 10,
+                alignSelf: "center",
+                margin: 10,
+              }}
+              iconSize={50}
+              onPress={this.activateCamera}
+            />
+            <AppButton
+              title="Pay"
+              iconName="contactless-payment"
+              style={{
+                height: 95,
+                width: 95,
+                margin: 10,
+                borderRadius: 10,
+                alignSelf: "center",
+              }}
+              iconSize={50}
+              onPress={this.activateCamera}
+            />
+          </View>
 
           <View style={styles.transactionsContainer}>
             <TitleText
@@ -98,6 +116,7 @@ class AccountsScreen extends Component {
                   from={item.from}
                   to={item.to}
                   amount={item.amount}
+                  type={item.type}
                 />
               )}
             />
@@ -106,26 +125,80 @@ class AccountsScreen extends Component {
 
         <Modal
           visible={this.state.showCamera}
-          animationType="slide"
+          animationType="fade"
           transparent={true}
         >
-          <Camera
-            takePic={
-              <AppButton
-                iconName="camera"
-                style={{ height: 60, width: 60 }}
-                iconSize={50}
-                onPress={() => console.log("take a pic")}
-              />
-            }
+          <BlurView
+            intensity={100}
+            style={{ flex: 1, justifyContent: "center" }}
           >
-            <AppButton
-              iconName="close"
-              style={{ height: 60, width: 60 }}
-              iconSize={40}
-              onPress={this.disableCamera}
-            />
-          </Camera>
+            <View style={styles.insideModalScreen}>
+              <TitleText
+                style={{ color: colors.primary, textAlign: "center" }}
+                title="PAY FOR ITEM"
+              />
+
+              <View style={{ flexDirection: "row", marginVertical: 15 }}>
+                <Text
+                  style={{ textAlignVertical: "center" }}
+                  children="Payee : "
+                />
+                <TextInput
+                  placeholder="PAYEE NAME"
+                  style={{
+                    justifyContent: "center",
+                    borderBottomWidth: 1,
+                    borderColor: colors.primary,
+                  }}
+                />
+              </View>
+              <View style={{ flexDirection: "row", marginVertical: 15 }}>
+                <Text
+                  style={{ textAlignVertical: "center" }}
+                  children="Amount : "
+                />
+                <TextInput
+                  placeholder="Amount"
+                  keyboardType="decimal-pad"
+                  style={{
+                    justifyContent: "center",
+                    borderBottomWidth: 1,
+                    borderColor: colors.primary,
+                  }}
+                />
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <AppButton
+                  style={{
+                    alignSelf: "center",
+                    height: 40,
+                    width: 40,
+                    borderRadius: 10,
+                  }}
+                  onPress={this.disableCamera}
+                  iconSize={40}
+                  iconName="close"
+                />
+
+                <AppButton
+                  style={{
+                    alignSelf: "center",
+                    height: 40,
+                    width: 40,
+                    borderRadius: 10,
+                  }}
+                  onPress={this.disableCamera}
+                  iconSize={40}
+                  iconName="check"
+                />
+              </View>
+            </View>
+          </BlurView>
         </Modal>
       </>
     );
@@ -171,6 +244,14 @@ const styles = StyleSheet.create({
   },
   insideHeaderContainer: {
     marginLeft: 60,
+  },
+  insideModalScreen: {
+    alignSelf: "center",
+    width: "60%",
+    height: "40%",
+    borderRadius: 25,
+    marginBottom: "40%",
+    //backgroundColor: colors.fifth,
   },
   transactionsContainer: {
     padding: 20,

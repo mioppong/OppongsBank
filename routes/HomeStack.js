@@ -9,6 +9,9 @@ import AccountsScreen from "../screens/AccountsScreen";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import TransferScreen from "../screens/TransferScreen";
 import MoreScreen from "../screens/MoreScreen";
+import CreditCardScreen from "../screens/CreditCardScreen";
+import GICScreen from "../screens/GICScreen";
+
 import Icon from "../components/Icon";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import { View } from "react-native";
@@ -25,6 +28,13 @@ const accScreens = {
     navigationOptions: {
       headerShown: false,
     },
+  },
+
+  GIC: {
+    screen: GICScreen,
+  },
+  Credit: {
+    screen: CreditCardScreen,
   },
 };
 

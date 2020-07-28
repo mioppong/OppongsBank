@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 35,
     marginVertical: 10,
+    justifyContent: "center",
   },
   text: {
     fontSize: 20,

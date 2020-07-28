@@ -1,3 +1,4 @@
+const TRANSFER = "TRANSFER";
 const initState = {
   checking1: {
     id: "1",
@@ -34,7 +35,7 @@ const initState = {
 
 const rootReducer = (state = initState, action) => {
   const arrayLength = state.checking1.transactions.length;
-  if (action.type === "ADD_TRANSACTION") {
+  if (action.type === TRANSFER) {
     switch (action.from.id) {
       case 1:
         state.checking1.balance -= parseInt(action.amount);
@@ -44,6 +45,7 @@ const rootReducer = (state = initState, action) => {
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
+          type: TRANSFER,
         });
 
         break;
@@ -56,6 +58,7 @@ const rootReducer = (state = initState, action) => {
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
+          type: TRANSFER,
         });
         break;
       case 3:
@@ -66,6 +69,7 @@ const rootReducer = (state = initState, action) => {
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
+          type: TRANSFER,
         });
         break;
     }
@@ -79,6 +83,7 @@ const rootReducer = (state = initState, action) => {
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
+          type: TRANSFER,
         });
 
         console.log("from is checking 1");
@@ -95,6 +100,7 @@ const rootReducer = (state = initState, action) => {
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
+          type: TRANSFER,
         });
         break;
       case 3:
@@ -105,6 +111,7 @@ const rootReducer = (state = initState, action) => {
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
+          type: TRANSFER,
         });
         break;
     }

@@ -38,6 +38,7 @@ class TransferScreen extends Component {
             <TransferComponent
               from={(item) => (this.from = item)}
               to={(item) => (this.to = item)}
+              type="TRANSFER"
             />
             <Amount getAmount={(amount) => (this.amount = amount)} />
             <AppButton title="Transfer" onPress={this.handleTransferButton} />
@@ -52,7 +53,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addTransaction: (from, to, amount) => {
       dispatch({
-        type: "ADD_TRANSACTION",
+        type: "TRANSFER",
         from: from,
         to: to,
         amount: amount,

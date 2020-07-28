@@ -3,9 +3,20 @@ import { StyleSheet, Text, View } from "react-native";
 import { color } from "react-native-reanimated";
 import colors from "../../config/colors";
 
-export default function TransactionItem({ from, to, amount }) {
+export default function TransactionItem({ from, to, amount, type }) {
   return (
     <View>
+      <View style={{ marginBottom: -20, marginTop: 30 }}>
+        <Text
+          children={type}
+          style={{
+            color: colors.fifth,
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        />
+      </View>
+
       <View style={styles.container}>
         <Text style={styles.fromStorage}>
           <Text style={styles.typeTitleText} children={"From: "} />
@@ -34,7 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     flex: 1,
-    marginVertical: 20,
+    marginVertical: 10,
   },
   coolLine: {
     width: "80%",
