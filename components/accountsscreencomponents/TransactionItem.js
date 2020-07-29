@@ -40,25 +40,54 @@ export default function TransactionItem({ from, to, amount, type, payee }) {
   } else if (type === "DEPOSIT") {
     return (
       <View>
-        <Text> type: {type}</Text>
-        <Text>to </Text>
+        <View style={{ marginBottom: -20, marginTop: 30 }}>
+          <Text
+            children={type}
+            style={{
+              color: colors.fifth,
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          />
+        </View>
 
-        <Text>{to} </Text>
+        <View style={styles.container}>
+          <Text style={styles.fromStorage}>
+            <Text style={styles.typeTitleText} children={"To : "} />
+            {to}
+          </Text>
 
-        <Text>amount </Text>
-        <Text>{amount} </Text>
+          <Text style={styles.fromStorage}>
+            <Text style={styles.typeTitleText} children={"Amount: "} />
+            {amount}
+          </Text>
+        </View>
       </View>
     );
   } else if (type === "PURCHASE") {
     return (
       <View>
-        <Text> type: {type}</Text>
+        <View style={{ marginBottom: -20, marginTop: 30 }}>
+          <Text
+            children={type}
+            style={{
+              color: colors.fifth,
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          />
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.fromStorage}>
+            <Text style={styles.typeTitleText} children={"Payee: "} />
+            {payee}
+          </Text>
 
-        <Text>payee </Text>
-        <Text>{payee} </Text>
-
-        <Text>amount </Text>
-        <Text>{amount} </Text>
+          <Text style={styles.fromStorage}>
+            <Text style={styles.typeTitleText} children={"Amount: "} />
+            {amount}
+          </Text>
+        </View>
       </View>
     );
   }

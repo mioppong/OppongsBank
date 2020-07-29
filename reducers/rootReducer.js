@@ -123,17 +123,33 @@ const rootReducer = (state = initState, action) => {
     transactionId++;
   } else if (action.type === DEPOSIT) {
     //IF IT IS A DEPOSIT---------------------------------------------------------------------------------------------------------------------------------------------
-
-    console.log(action);
-    //BEFORE WE DIDNT PARSE THE ACCOUNT ID TO AN INT, NOW WE DO
-    //console.log("deposit to: ", action.to.id);
-    //console.log("payee is: ", action.payee.payee);
-    //console.log("Amount is: ", action.amount);
     const whichAccount = parseInt(action.to.id);
 
     switch (whichAccount) {
       case 1:
+        state.checking1.balance += parseInt(action.amount);
+
         state.checking1.transactions.unshift({
+          id: (transactionId++).toString(),
+          to: action.to.name,
+          amount: action.amount,
+          type: DEPOSIT,
+        });
+        break;
+      case 2:
+        state.checking2.balance += parseInt(action.amount);
+
+        state.checking2.transactions.unshift({
+          id: (transactionId++).toString(),
+          to: action.to.name,
+          amount: action.amount,
+          type: DEPOSIT,
+        });
+        break;
+      case 3:
+        state.savings.balance += parseInt(action.amount);
+
+        state.savings.transactions.unshift({
           id: (transactionId++).toString(),
           to: action.to.name,
           amount: action.amount,
@@ -147,21 +163,34 @@ const rootReducer = (state = initState, action) => {
     console.log(action);
     switch (whichAccount) {
       case 1:
+        state.checking1.balance -= parseInt(action.amount);
+
         state.checking1.transactions.unshift({
           id: (transactionId++).toString(),
           payee: action.payee.payee,
           amount: action.amount,
           type: PURCHASE,
         });
-        //console.log("in purchase");
-        //console.log('amount is', action.amount)
-        //console.log('payee is', action.to.payee)
+        break;
+      case 1:
+        state.checking2.balance -= parseInt(action.amount);
 
-        console.log("paying from: ", action.to.id);
-        console.log("payee is: ", action.payee.payee);
-        console.log("Amount is: ", action.amount);
-        console.log("type is: ", action.type);
+        state.checking2.transactions.unshift({
+          id: (transactionId++).toString(),
+          payee: action.payee.payee,
+          amount: action.amount,
+          type: PURCHASE,
+        });
+        break;
+      case 1:
+        state.savings.balance -= parseInt(action.amount);
 
+        state.savings.transactions.unshift({
+          id: (transactionId++).toString(),
+          payee: action.payee.payee,
+          amount: action.amount,
+          type: PURCHASE,
+        });
         break;
     }
   }
