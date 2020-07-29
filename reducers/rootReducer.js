@@ -1,4 +1,9 @@
 const TRANSFER = "TRANSFER";
+const DEPOSIT = "DEPOSIT";
+const PURCHASE = "PURCHASE";
+
+var transactionId = 0;
+
 const initState = {
   checking1: {
     id: "1",
@@ -35,13 +40,16 @@ const initState = {
 
 const rootReducer = (state = initState, action) => {
   const arrayLength = state.checking1.transactions.length;
+
   if (action.type === TRANSFER) {
+    //IF IT IS A TRANSFER---------------------------------------------------------------------------------------------------------------------------------------------
+
     switch (action.from.id) {
       case 1:
         state.checking1.balance -= parseInt(action.amount);
 
         state.checking1.transactions.unshift({
-          id: arrayLength + 1 + "",
+          id: (transactionId++).toString(),
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
@@ -54,7 +62,7 @@ const rootReducer = (state = initState, action) => {
         state.checking2.balance -= parseInt(action.amount);
 
         state.checking2.transactions.unshift({
-          id: arrayLength + 1 + "",
+          id: (transactionId++).toString(),
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
@@ -65,7 +73,7 @@ const rootReducer = (state = initState, action) => {
         state.savings.balance -= parseInt(action.amount);
 
         state.savings.transactions.unshift({
-          id: arrayLength + 1 + "",
+          id: (transactionId++).toString(),
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
@@ -73,22 +81,19 @@ const rootReducer = (state = initState, action) => {
         });
         break;
     }
+    transactionId++;
 
     switch (action.to.id) {
       case 1:
         state.checking1.balance += parseInt(action.amount);
 
         state.checking1.transactions.unshift({
-          id: arrayLength + 1 + "",
+          id: (transactionId++).toString(),
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
           type: TRANSFER,
         });
-
-        console.log("from is checking 1");
-        console.log("balance is", state.checking1.balance);
-        console.log("transaction is", state.checking1.transactions);
 
         break;
 
@@ -96,7 +101,7 @@ const rootReducer = (state = initState, action) => {
         state.checking2.balance += parseInt(action.amount);
 
         state.checking2.transactions.unshift({
-          id: arrayLength + 1 + "",
+          id: (transactionId++).toString(),
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
@@ -107,7 +112,7 @@ const rootReducer = (state = initState, action) => {
         state.savings.balance += parseInt(action.amount);
 
         state.savings.transactions.unshift({
-          id: arrayLength + 1 + "",
+          id: (transactionId++).toString(),
           from: action.from.label,
           to: action.to.label,
           amount: action.amount,
@@ -115,7 +120,54 @@ const rootReducer = (state = initState, action) => {
         });
         break;
     }
+    transactionId++;
+  } else if (action.type === DEPOSIT) {
+    //IF IT IS A DEPOSIT---------------------------------------------------------------------------------------------------------------------------------------------
+
+    console.log(action);
+    //BEFORE WE DIDNT PARSE THE ACCOUNT ID TO AN INT, NOW WE DO
+    //console.log("deposit to: ", action.to.id);
+    //console.log("payee is: ", action.payee.payee);
+    //console.log("Amount is: ", action.amount);
+    const whichAccount = parseInt(action.to.id);
+
+    switch (whichAccount) {
+      case 1:
+        state.checking1.transactions.unshift({
+          id: (transactionId++).toString(),
+          to: action.to.name,
+          amount: action.amount,
+          type: DEPOSIT,
+        });
+        break;
+    }
+  } else if (action.type === PURCHASE) {
+    //IF IT IS A PURCHASE---------------------------------------------------------------------------------------------------------------------------------------------
+    const whichAccount = parseInt(action.to.id);
+    console.log(action);
+    switch (whichAccount) {
+      case 1:
+        state.checking1.transactions.unshift({
+          id: (transactionId++).toString(),
+          payee: action.payee.payee,
+          amount: action.amount,
+          type: PURCHASE,
+        });
+        //console.log("in purchase");
+        //console.log('amount is', action.amount)
+        //console.log('payee is', action.to.payee)
+
+        console.log("paying from: ", action.to.id);
+        console.log("payee is: ", action.payee.payee);
+        console.log("Amount is: ", action.amount);
+        console.log("type is: ", action.type);
+
+        break;
+    }
   }
+
+  transactionId++;
+
   return state;
 };
 

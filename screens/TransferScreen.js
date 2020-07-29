@@ -38,7 +38,7 @@ class TransferScreen extends Component {
             <TransferComponent
               from={(item) => (this.from = item)}
               to={(item) => (this.to = item)}
-              type="TRANSFER"
+              type="DEPOSIT"
             />
             <Amount getAmount={(amount) => (this.amount = amount)} />
             <AppButton title="Transfer" onPress={this.handleTransferButton} />

@@ -3,38 +3,65 @@ import { StyleSheet, Text, View } from "react-native";
 import { color } from "react-native-reanimated";
 import colors from "../../config/colors";
 
-export default function TransactionItem({ from, to, amount, type }) {
-  return (
-    <View>
-      <View style={{ marginBottom: -20, marginTop: 30 }}>
-        <Text
-          children={type}
-          style={{
-            color: colors.fifth,
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        />
-      </View>
+export default function TransactionItem({ from, to, amount, type, payee }) {
+  console.log("transaction type", type);
+  if (type === "TRANSFER") {
+    return (
+      <View>
+        <View style={{ marginBottom: -20, marginTop: 30 }}>
+          <Text
+            children={type}
+            style={{
+              color: colors.fifth,
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          />
+        </View>
 
-      <View style={styles.container}>
-        <Text style={styles.fromStorage}>
-          <Text style={styles.typeTitleText} children={"From: "} />
-          {from}
-        </Text>
-        <Text style={styles.fromStorage}>
-          <Text style={styles.typeTitleText} children={"To: "} />
-          {to}
-        </Text>
+        <View style={styles.container}>
+          <Text style={styles.fromStorage}>
+            <Text style={styles.typeTitleText} children={"From: "} />
+            {from}
+          </Text>
+          <Text style={styles.fromStorage}>
+            <Text style={styles.typeTitleText} children={"To: "} />
+            {to}
+          </Text>
 
-        <Text style={styles.fromStorage}>
-          <Text style={styles.typeTitleText} children={"Amount: "} />
-          {amount}
-        </Text>
+          <Text style={styles.fromStorage}>
+            <Text style={styles.typeTitleText} children={"Amount: "} />
+            {amount}
+          </Text>
+        </View>
+        <View style={styles.coolLine} />
       </View>
-      <View style={styles.coolLine} />
-    </View>
-  );
+    );
+  } else if (type === "DEPOSIT") {
+    return (
+      <View>
+        <Text> type: {type}</Text>
+        <Text>to </Text>
+
+        <Text>{to} </Text>
+
+        <Text>amount </Text>
+        <Text>{amount} </Text>
+      </View>
+    );
+  } else if (type === "PURCHASE") {
+    return (
+      <View>
+        <Text> type: {type}</Text>
+
+        <Text>payee </Text>
+        <Text>{payee} </Text>
+
+        <Text>amount </Text>
+        <Text>{amount} </Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

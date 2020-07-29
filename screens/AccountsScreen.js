@@ -1,5 +1,9 @@
 //I MADE THIS CLASS TO SHOW ONLY THE CHECKING ACCOUNTS, AND THE SAVINGS ACCOUNT, SINCE THEY'RE SIMILAR
 
+const TRANSFER = "TRANSFER";
+const DEPOSIT = "DEPOSIT";
+const PURCHASE = "PURCHASE";
+
 import React, { Component } from "react";
 import {
   Text,
@@ -13,32 +17,58 @@ import {
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
-import { color } from "react-native-reanimated";
 import TransactionItem from "../components/accountsscreencomponents/TransactionItem";
 import AppButton from "../components/AppButton";
 import Icon from "../components/Icon";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import Camera from "../components/Camera";
 import { BlurView } from "expo-blur";
+import { connect } from "react-redux";
+import TransactionComponent from "../components/accountsscreencomponents/TransactionComponent";
+
 class AccountsScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showCamera: false,
+      showPurchaseModal: false,
+      showDepositModal: false,
+      payee: "",
+      amount: 0,
+      type: null,
     };
   }
 
-  activateCamera = () => {
+  depositModal = (value) => {
     this.setState({
-      showCamera: true,
+      showDepositModal: value,
     });
   };
 
-  disableCamera = () => {
+  purchaseModal = (value) => {
     this.setState({
-      showCamera: false,
+      showPurchaseModal: value,
     });
+  };
+
+  handleDepositButton = () => {
+    this.state.type = DEPOSIT;
+    this.depositModal(false);
+
+    const { params } = this.props.navigation.state;
+    this.props.addTransaction(this.state.amount, params, this.state.type);
+  };
+
+  handlePurchaseButton = () => {
+    this.state.type = PURCHASE;
+    this.purchaseModal(false);
+
+    const { params } = this.props.navigation.state;
+    this.props.addTransaction(
+      this.state.amount,
+      params,
+      this.state.type,
+      this.state
+    );
   };
 
   render() {
@@ -84,7 +114,7 @@ class AccountsScreen extends Component {
                 margin: 10,
               }}
               iconSize={50}
-              onPress={this.activateCamera}
+              onPress={() => this.depositModal(true)}
             />
             <AppButton
               title="Pay"
@@ -97,34 +127,22 @@ class AccountsScreen extends Component {
                 alignSelf: "center",
               }}
               iconSize={50}
-              onPress={this.activateCamera}
+              onPress={() => this.purchaseModal(true)}
             />
           </View>
-
           <View style={styles.transactionsContainer}>
             <TitleText
               title={"Transactions: "}
               style={{ fontSize: 15, color: colors.third }}
             />
 
-            <FlatList
-              //            style={styles.transactionsContainer}
-              data={params.transactions}
-              keyExtractor={(item) => item.id}
-              renderItem={({ item }) => (
-                <TransactionItem
-                  from={item.from}
-                  to={item.to}
-                  amount={item.amount}
-                  type={item.type}
-                />
-              )}
-            />
+            <TransactionComponent data={params.transactions} />
           </View>
         </Screen>
 
+        {/*---------SHOW DEPOSIT MODAL--------------------------------------------------------------------------------------------------- */}
         <Modal
-          visible={this.state.showCamera}
+          visible={this.state.showDepositModal}
           animationType="fade"
           transparent={true}
         >
@@ -135,23 +153,10 @@ class AccountsScreen extends Component {
             <View style={styles.insideModalScreen}>
               <TitleText
                 style={{ color: colors.primary, textAlign: "center" }}
-                title="PAY FOR ITEM"
+                title="Deposit Amount"
               />
 
-              <View style={{ flexDirection: "row", marginVertical: 15 }}>
-                <Text
-                  style={{ textAlignVertical: "center" }}
-                  children="Payee : "
-                />
-                <TextInput
-                  placeholder="PAYEE NAME"
-                  style={{
-                    justifyContent: "center",
-                    borderBottomWidth: 1,
-                    borderColor: colors.primary,
-                  }}
-                />
-              </View>
+              <View style={{ flexDirection: "row", marginVertical: 15 }}></View>
               <View style={{ flexDirection: "row", marginVertical: 15 }}>
                 <Text
                   style={{ textAlignVertical: "center" }}
@@ -159,6 +164,7 @@ class AccountsScreen extends Component {
                 />
                 <TextInput
                   placeholder="Amount"
+                  onChangeText={(event) => this.setState({ amount: event })}
                   keyboardType="decimal-pad"
                   style={{
                     justifyContent: "center",
@@ -174,15 +180,15 @@ class AccountsScreen extends Component {
                 }}
               >
                 <AppButton
+                  iconName="close"
                   style={{
                     alignSelf: "center",
                     height: 40,
                     width: 40,
                     borderRadius: 10,
                   }}
-                  onPress={this.disableCamera}
+                  onPress={() => this.depositModal(false)}
                   iconSize={40}
-                  iconName="close"
                 />
 
                 <AppButton
@@ -192,7 +198,90 @@ class AccountsScreen extends Component {
                     width: 40,
                     borderRadius: 10,
                   }}
-                  onPress={this.disableCamera}
+                  onPress={this.handleDepositButton}
+                  iconSize={40}
+                  iconName="check"
+                />
+              </View>
+            </View>
+          </BlurView>
+        </Modal>
+
+        {/*---------SHOW PURCHASE MODAL--------------------------------------------------------------------------------------------------- */}
+        <Modal
+          visible={this.state.showPurchaseModal}
+          animationType="fade"
+          transparent={true}
+        >
+          <BlurView
+            intensity={100}
+            style={{ flex: 1, justifyContent: "center" }}
+          >
+            <View style={styles.insideModalScreen}>
+              <TitleText
+                style={{ color: colors.primary, textAlign: "center" }}
+                title="PAY WHO?"
+              />
+
+              <View style={{ flexDirection: "row", marginVertical: 15 }}>
+                <Text
+                  style={{ textAlignVertical: "center" }}
+                  children="Payee : "
+                />
+                <TextInput
+                  placeholder="Name"
+                  onChangeText={(event) => this.setState({ payee: event })}
+                  keyboardType="default"
+                  style={{
+                    justifyContent: "center",
+                    borderBottomWidth: 1,
+                    borderColor: colors.primary,
+                  }}
+                />
+              </View>
+
+              <View style={{ flexDirection: "row", marginVertical: 15 }}>
+                <Text
+                  style={{ textAlignVertical: "center" }}
+                  children="Amount : "
+                />
+                <TextInput
+                  placeholder="Amount"
+                  onChangeText={(event) => this.setState({ amount: event })}
+                  keyboardType="decimal-pad"
+                  style={{
+                    justifyContent: "center",
+                    borderBottomWidth: 1,
+                    borderColor: colors.primary,
+                  }}
+                />
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <AppButton
+                  iconName="close"
+                  style={{
+                    alignSelf: "center",
+                    height: 40,
+                    width: 40,
+                    borderRadius: 10,
+                  }}
+                  onPress={() => this.purchaseModal(false)}
+                  iconSize={40}
+                />
+
+                <AppButton
+                  style={{
+                    alignSelf: "center",
+                    height: 40,
+                    width: 40,
+                    borderRadius: 10,
+                  }}
+                  onPress={this.handlePurchaseButton}
                   iconSize={40}
                   iconName="check"
                 />
@@ -205,7 +294,20 @@ class AccountsScreen extends Component {
   }
 }
 
-export default AccountsScreen;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTransaction: (amount, to, type, payee) => {
+      dispatch({
+        amount: amount,
+        to: to,
+        type: type,
+        payee: payee,
+      });
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AccountsScreen);
 
 const styles = StyleSheet.create({
   balanceContainer: {
@@ -251,7 +353,6 @@ const styles = StyleSheet.create({
     height: "40%",
     borderRadius: 25,
     marginBottom: "40%",
-    //backgroundColor: colors.fifth,
   },
   transactionsContainer: {
     padding: 20,
