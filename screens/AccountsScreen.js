@@ -1,23 +1,13 @@
 //I MADE THIS CLASS TO SHOW ONLY THE CHECKING ACCOUNTS, AND THE SAVINGS ACCOUNT, SINCE THEY'RE SIMILAR
 
-const TRANSFER = "TRANSFER";
 const DEPOSIT = "DEPOSIT";
 const PURCHASE = "PURCHASE";
 
 import React, { Component } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  FlatList,
-  ScrollView,
-  Modal,
-  TextInput,
-} from "react-native";
+import { Text, StyleSheet, View, Modal, TextInput } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
-import TransactionItem from "../components/accountsscreencomponents/TransactionItem";
 import AppButton from "../components/AppButton";
 import Icon from "../components/Icon";
 import { TouchableOpacity } from "react-native-gesture-handler";

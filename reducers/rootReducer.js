@@ -26,8 +26,10 @@ const initState = {
   },
   gic: {
     id: "4",
+    name: "gic",
     balance: 0,
-    interestRate: 0,
+    interestRate: 1.5,
+    transactions: [],
   },
   creditcard: {
     id: "5",

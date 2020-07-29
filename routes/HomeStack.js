@@ -32,9 +32,15 @@ const accScreens = {
 
   GIC: {
     screen: GICScreen,
+    navigationOptions: {
+      headerShown: false,
+    },
   },
   Credit: {
     screen: CreditCardScreen,
+    navigationOptions: {
+      headerShown: false,
+    },
   },
 };
 

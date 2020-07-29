@@ -45,19 +45,30 @@ class HomeScreen extends Component {
           transactions: this.props.savings.transactions,
         });
         break;
+
+      case 4:
+        navigation.navigate("GIC");
+        break;
+      case 5:
+        navigation.navigate("Credit");
+        break;
     }
   };
 
   componentDidMount() {
     const { navigation } = this.props;
+    var calculateOwing =
+      this.props.creditcard.capacity -
+      this.props.creditcard.balance +
+      (this.props.checking1.balance < 0 ? this.props.checking1.balance : 0);
+
     navigation.addListener("willFocus", () =>
       this.setState({
         totalHave:
           this.props.checking1.balance +
           this.props.checking2.balance +
           this.props.savings.balance,
-        totalOwe:
-          this.props.creditcard.capacity - this.props.creditcard.balance,
+        totalOwe: calculateOwing,
       })
     );
   }
