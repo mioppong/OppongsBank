@@ -219,7 +219,7 @@ const rootReducer = (state = initState, action) => {
           type: PURCHASE,
         });
         break;
-      case 1:
+      case 2:
         state.checking2.balance -= parseInt(action.amount);
 
         state.checking2.transactions.unshift({
@@ -229,7 +229,7 @@ const rootReducer = (state = initState, action) => {
           type: PURCHASE,
         });
         break;
-      case 1:
+      case 3:
         state.savings.balance -= parseInt(action.amount);
 
         state.savings.transactions.unshift({

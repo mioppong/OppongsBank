@@ -1,3 +1,7 @@
+const MONTHLY = "MONTHLY";
+const ANNUALLY = "ANNUALLY";
+var Finance = require("financejs");
+
 import React, { Component } from "react";
 import {
   Text,
@@ -23,9 +27,11 @@ class GICScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      interestRate: 1.5,
+      interestRate: 2,
       showTransactions: false,
       showInterestRateModal: false,
+      showPaidWhenModal: false,
+      paidWhen: MONTHLY,
       month3: 0,
       month6: 0,
       month9: 0,
@@ -37,20 +43,67 @@ class GICScreen extends Component {
     };
   }
 
-  calculatePotentualBalance() {
+  componentDidMount() {
+    const { balance } = this.props.gic;
+    var finance = new Finance();
+
+    console.log("Balance is, ", this.state.interestRate);
+    let month3 = 0;
+    let month6 = 0;
+    let month9;
+    let year1;
+
+    let year1month6;
+
+    let year2;
+    let year3;
+    let year5;
+
+    if (this.state.paidWhen === MONTHLY) {
+      month3 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      month6 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      month9 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      year1 = finance.CI(this.state.interestRate, 1, 100000, 1);
+
+      year1month6 = finance.CI(this.state.interestRate, 1, 100000, 1);
+
+      year2 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      year3 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      year5 = finance.CI(this.state.interestRate, 1, 100000, 1);
+    } else if (this.state.paidWhen === MONTHLY) {
+      month3 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      month6 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      month9 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      year1 = finance.CI(this.state.interestRate, 1, 100000, 1);
+
+      year1month6 = finance.CI(this.state.interestRate, 1, 100000, 1);
+
+      year2 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      year3 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      year5 = finance.CI(this.state.interestRate, 1, 100000, 1);
+    }
+
     this.setState({
-      interestRate: 1.5,
       showTransactions: false,
       showInterestRateModal: false,
-      month3: 0,
-      month6: 0,
-      month9: 0,
-      year1: 0,
-      year1month6: 0,
-      year2: 0,
-      year3: 0,
-      year5: 0,
+      month3: month3,
+      month6: month6,
+      month9: month9,
+      year1: year1,
+      year1month6: year1month6,
+      year2: year2,
+      year3: year3,
+      year5: year5,
     });
+  }
+
+  paidWhenButtonHandler() {
+    this.setState({
+      showPaidWhenModal: true,
+      paidWhen: this.state.paidWhen === MONTHLY ? ANNUALLY : MONTHLY,
+    });
+
+    this.componentDidMount();
   }
   render() {
     const { params } = this.props.navigation.state;
@@ -88,6 +141,12 @@ class GICScreen extends Component {
               onPress={() => this.setState({ showInterestRateModal: true })}
             />
           </View>
+          <CardComponent
+            cardTitle="Paid"
+            style={{ alignSelf: "center" }}
+            amount={this.state.paidWhen}
+            onPress={() => this.paidWhenButtonHandler()}
+          />
 
           <WillHave date="3 months" amount={this.state.month3} />
           <WillHave date="6 months" amount={this.state.month6} />

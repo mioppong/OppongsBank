@@ -7,7 +7,10 @@ export default function WillHave({ date, amount }) {
     <View style={styles.container}>
       <Text style={styles.mainText}>
         In <Text children={date} style={styles.dateText} /> you will have{" "}
-        <Text children={amount} style={styles.amountText} />
+        <Text
+          children={"$-" + amount.toLocaleString()}
+          style={styles.amountText}
+        />
       </Text>
     </View>
   );
@@ -16,20 +19,20 @@ export default function WillHave({ date, amount }) {
 const styles = StyleSheet.create({
   amountText: {
     color: colors.fifth,
-    fontSize: 20,
+    fontSize: 19,
   },
 
   container: {
     borderColor: colors.fifth,
     borderWidth: 0.1,
     margin: 5,
-    width: "80%",
+    width: "100%",
     borderRadius: 4,
   },
 
   dateText: {
     color: colors.fifth,
-    fontSize: 20,
+    fontSize: 15,
   },
 
   mainText: {
