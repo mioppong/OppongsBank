@@ -83,6 +83,28 @@ const rootReducer = (state = initState, action) => {
           type: TRANSFER,
         });
         break;
+      case 4:
+        state.gic.balance -= parseInt(action.amount);
+
+        state.gic.transactions.unshift({
+          id: (transactionId++).toString(),
+          from: action.from.label,
+          to: action.to.label,
+          amount: action.amount,
+          type: TRANSFER,
+        });
+        break;
+      case 5:
+        state.creditcard.balance -= parseInt(action.amount);
+
+        state.creditcard.transactions.unshift({
+          id: (transactionId++).toString(),
+          from: action.from.label,
+          to: action.to.label,
+          amount: action.amount,
+          type: TRANSFER,
+        });
+        break;
     }
     transactionId++;
 
@@ -115,6 +137,28 @@ const rootReducer = (state = initState, action) => {
         state.savings.balance += parseInt(action.amount);
 
         state.savings.transactions.unshift({
+          id: (transactionId++).toString(),
+          from: action.from.label,
+          to: action.to.label,
+          amount: action.amount,
+          type: TRANSFER,
+        });
+        break;
+      case 4:
+        state.gic.balance += parseInt(action.amount);
+
+        state.gic.transactions.unshift({
+          id: (transactionId++).toString(),
+          from: action.from.label,
+          to: action.to.label,
+          amount: action.amount,
+          type: TRANSFER,
+        });
+        break;
+      case 3:
+        state.creditcard.balance += parseInt(action.amount);
+
+        state.creditcard.transactions.unshift({
           id: (transactionId++).toString(),
           from: action.from.label,
           to: action.to.label,
