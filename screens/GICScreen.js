@@ -63,4 +63,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
   },
+  headerCotainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    height: "10%",
+  },
+  insideHeaderContainer: {
+    marginLeft: 60,
+  },
 });

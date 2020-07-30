@@ -33,6 +33,7 @@ const initState = {
   },
   creditcard: {
     id: "5",
+    name: "creditcard",
     balance: 1000,
     capacity: 1000,
     interestRate: 0,
