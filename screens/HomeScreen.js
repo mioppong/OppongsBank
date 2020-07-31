@@ -57,20 +57,26 @@ class HomeScreen extends Component {
 
   componentDidMount() {
     const { navigation } = this.props;
-    var calculateOwing =
-      this.props.creditcard.capacity -
-      this.props.creditcard.balance +
-      (this.props.checking1.balance < 0 ? this.props.checking1.balance : 0);
 
-    navigation.addListener("willFocus", () =>
+    navigation.addListener("willFocus", () => {
+      let totalHave =
+        (this.props.checking1.balance > 0 ? this.props.checking1.balance : 0) +
+        (this.props.checking2.balance > 0 ? this.props.checking2.balance : 0) +
+        (this.props.savings.balance > 0 ? this.props.savings.balance : 0) +
+        (this.props.gic.balance > 0 ? this.props.gic.balance : 0);
+
+      let totalOwe =
+        (this.props.checking1.balance < 0 ? this.props.checking1.balance : 0) +
+        (this.props.checking2.balance < 0 ? this.props.checking2.balance : 0) +
+        (this.props.savings.balance < 0 ? this.props.savings.balance : 0) +
+        (this.props.gic.balance < 0 ? this.props.gic.balance : 0) +
+        (this.props.creditcard.capacity - this.props.creditcard.balance);
+
       this.setState({
-        totalHave:
-          this.props.checking1.balance +
-          this.props.checking2.balance +
-          this.props.savings.balance,
-        totalOwe: calculateOwing,
-      })
-    );
+        totalHave: totalHave,
+        totalOwe: totalOwe,
+      });
+    });
   }
 
   render() {
