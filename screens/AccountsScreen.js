@@ -23,6 +23,7 @@ class AccountsScreen extends Component {
       showPurchaseModal: false,
       showDepositModal: false,
       doneModal: false,
+      missingModal: false,
 
       payee: "",
       amount: 0,
@@ -43,27 +44,39 @@ class AccountsScreen extends Component {
   };
 
   handleDepositButton = () => {
-    this.state.type = DEPOSIT;
-    this.depositModal(false);
+    if (this.state.amount === 0 || isNaN(this.state.amount)) {
+      this.missingInputModal();
+    } else {
+      this.state.type = DEPOSIT;
 
-    const { params } = this.props.navigation.state;
-    this.props.addTransaction(this.state.amount, params, this.state.type);
-    this.doneModalHandler();
+      const { params } = this.props.navigation.state;
+      this.props.addTransaction(this.state.amount, params, this.state.type);
+      this.doneModalHandler();
+      this.depositModal(false);
+    }
   };
 
   handlePurchaseButton = () => {
-    this.state.type = PURCHASE;
-    this.purchaseModal(false);
+    if (
+      this.state.payee === "" ||
+      this.state.amount === 0 ||
+      isNaN(this.state.amount)
+    ) {
+      this.missingInputModal();
+    } else {
+      this.state.type = PURCHASE;
+      this.purchaseModal(false);
 
-    const { params } = this.props.navigation.state;
-    this.props.addTransaction(
-      this.state.amount,
-      params,
-      this.state.type,
-      this.state
-    );
+      const { params } = this.props.navigation.state;
+      this.props.addTransaction(
+        this.state.amount,
+        params,
+        this.state.type,
+        this.state
+      );
 
-    this.doneModalHandler();
+      this.doneModalHandler();
+    }
   };
 
   doneModalHandler = () => {
@@ -77,6 +90,16 @@ class AccountsScreen extends Component {
     }, 1000);
   };
 
+  missingInputModal = () => {
+    this.setState({
+      missingModal: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        missingModal: false,
+      });
+    }, 1000);
+  };
   render() {
     const { params } = this.props.navigation.state;
 
@@ -204,7 +227,7 @@ class AccountsScreen extends Component {
                     width: 40,
                     borderRadius: 10,
                   }}
-                  onPress={this.handleDepositButton}
+                  onPress={() => this.handleDepositButton()}
                   iconSize={40}
                   iconName="check"
                 />
@@ -309,6 +332,23 @@ class AccountsScreen extends Component {
             <AppButton
               iconName="check"
               style={{ backgroundColor: "green", alignSelf: "center" }}
+            />
+          </View>
+        </Modal>
+
+        {/*---------MISSING MODAL--------------------------------------------------------------------------------------------------- */}
+
+        <Modal
+          transparent={true}
+          visible={this.state.missingModal}
+          animationType="fade"
+        >
+          <View
+            style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
+          >
+            <AppButton
+              iconName="close"
+              style={{ backgroundColor: "red", alignSelf: "center" }}
             />
           </View>
         </Modal>
