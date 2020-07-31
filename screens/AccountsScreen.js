@@ -22,6 +22,8 @@ class AccountsScreen extends Component {
     this.state = {
       showPurchaseModal: false,
       showDepositModal: false,
+      doneModal: false,
+
       payee: "",
       amount: 0,
       type: null,
@@ -46,6 +48,7 @@ class AccountsScreen extends Component {
 
     const { params } = this.props.navigation.state;
     this.props.addTransaction(this.state.amount, params, this.state.type);
+    this.doneModalHandler();
   };
 
   handlePurchaseButton = () => {
@@ -59,6 +62,19 @@ class AccountsScreen extends Component {
       this.state.type,
       this.state
     );
+
+    this.doneModalHandler();
+  };
+
+  doneModalHandler = () => {
+    this.setState({
+      doneModal: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        doneModal: false,
+      });
+    }, 1000);
   };
 
   render() {
@@ -278,6 +294,23 @@ class AccountsScreen extends Component {
               </View>
             </View>
           </BlurView>
+        </Modal>
+
+        {/*---------DONE MODAL--------------------------------------------------------------------------------------------------- */}
+
+        <Modal
+          transparent={true}
+          visible={this.state.doneModal}
+          animationType="fade"
+        >
+          <View
+            style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
+          >
+            <AppButton
+              iconName="check"
+              style={{ backgroundColor: "green", alignSelf: "center" }}
+            />
+          </View>
         </Modal>
       </>
     );

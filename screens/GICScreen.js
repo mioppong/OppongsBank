@@ -223,7 +223,7 @@ class GICScreen extends Component {
               </View>
               <AppButton
                 onPress={() => this.setState({ showInterestRateModal: false })}
-                iconName="close"
+                iconName="check-bold"
                 iconSize={40}
                 style={{ alignSelf: "center", height: 50, width: 50 }}
               />
