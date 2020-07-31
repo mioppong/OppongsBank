@@ -72,7 +72,7 @@ const tabScreens = {
     navigationOptions: {
       tabBarLabel: " ",
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="dots-horizontal" size={50} iconColor={tintColor} />
+        <Icon name="settings" size={50} iconColor={tintColor} />
       ),
     },
   },
