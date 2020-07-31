@@ -6,6 +6,7 @@ import {
   ScrollView,
   Picker,
   Image,
+  Modal,
 } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
@@ -23,46 +24,121 @@ class TransferScreen extends Component {
     this.from = "";
     this.to = "";
     this.amount = "";
+
+    this.state = {
+      doneModal: false,
+      missingModal: false,
+    };
   }
 
   handleTransferButton = () => {
-    //console.log(this.from, this.to, this.amount);
-    this.props.addTransaction(this.from, this.to, this.amount);
+    //here if we get an input from user not valid, and they press transfer, we gice an X on the Screen
+    if (
+      this.from === "" ||
+      this.to === "" ||
+      this.amount === "" ||
+      isNaN(this.amount) ||
+      this.from.id === this.to.id
+    ) {
+      console.log("missing something");
+      this.missingInputModal();
+    } else {
+      this.doneModalHandler();
+      this.props.addTransaction(this.from, this.to, this.amount);
+    }
+  };
+
+  doneModalHandler = () => {
+    this.setState({
+      doneModal: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        doneModal: false,
+      });
+    }, 1000);
+  };
+
+  missingInputModal = () => {
+    this.setState({
+      missingModal: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        missingModal: false,
+      });
+    }, 1000);
   };
 
   render() {
     return (
-      <Screen style={styles.container}>
-        <View
-          style={{
-            marginLeft: 40,
-            flexDirection: "row",
-          }}
-        >
-          <Image
-            source={require("../assets/logo.png")}
+      <>
+        <Screen style={styles.container}>
+          <View
             style={{
-              width: 30,
-              height: 30,
-              alignSelf: "center",
-              marginRight: 20,
+              marginLeft: 40,
+              flexDirection: "row",
             }}
-          />
-
-          <TitleText title="Transfer" />
-        </View>
-        <ScrollView>
-          <View style={styles.insideContainer}>
-            <TransferComponent
-              from={(item) => (this.from = item)}
-              to={(item) => (this.to = item)}
-              type="DEPOSIT"
+          >
+            <Image
+              source={require("../assets/logo.png")}
+              style={{
+                width: 40,
+                height: 40,
+                alignSelf: "center",
+                marginRight: 20,
+              }}
             />
-            <Amount getAmount={(amount) => (this.amount = amount)} />
-            <AppButton title="Transfer" onPress={this.handleTransferButton} />
+
+            <TitleText title="Transfer" />
           </View>
-        </ScrollView>
-      </Screen>
+          <ScrollView>
+            <View style={styles.insideContainer}>
+              <TransferComponent
+                from={(item) => (this.from = item)}
+                to={(item) => (this.to = item)}
+                type="DEPOSIT"
+              />
+              <Amount getAmount={(amount) => (this.amount = amount)} />
+              <AppButton title="Transfer" onPress={this.handleTransferButton} />
+            </View>
+          </ScrollView>
+        </Screen>
+
+        {/*---------DONE MODAL--------------------------------------------------------------------------------------------------- */}
+
+        <Modal
+          transparent={true}
+          visible={this.state.doneModal}
+          animationType="fade"
+        >
+          <View
+            style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
+          >
+            <AppButton
+              iconName="check"
+              style={{ backgroundColor: "green", alignSelf: "center" }}
+            />
+          </View>
+        </Modal>
+
+        {/*---------MISSING MODAL--------------------------------------------------------------------------------------------------- */}
+
+        <Modal
+          transparent={true}
+          visible={this.state.missingModal}
+          animationType="fade"
+        >
+          <View
+            style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
+          >
+            <AppButton
+              iconName="close"
+              style={{ backgroundColor: "red", alignSelf: "center" }}
+            />
+          </View>
+        </Modal>
+      </>
     );
   }
 }

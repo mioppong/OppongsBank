@@ -4,12 +4,21 @@ import colors from "../../config/colors";
 import TitleText from "../TitleText";
 
 export default function CardComponent({ cardTitle, amount, onPress, style }) {
-  return (
-    <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-      <TitleText title={cardTitle} style={styles.cardTitle} />
-      <Text style={styles.amountText}>{amount}</Text>
-    </TouchableOpacity>
-  );
+  if (cardTitle === "Interest Rate") {
+    return (
+      <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
+        <TitleText title={cardTitle} style={styles.cardTitle} />
+        <Text style={styles.amountText}>{amount + " %"}</Text>
+      </TouchableOpacity>
+    );
+  } else {
+    return (
+      <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
+        <TitleText title={cardTitle} style={styles.cardTitle} />
+        <Text style={styles.amountText}>{"$ - " + amount}</Text>
+      </TouchableOpacity>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

@@ -34,8 +34,8 @@ export default class MoreScreen extends Component {
           <Image
             source={require("../assets/logo.png")}
             style={{
-              width: 30,
-              height: 30,
+              width: 40,
+              height: 40,
               alignSelf: "center",
               marginRight: 20,
             }}
