@@ -203,21 +203,34 @@ class GICScreen extends Component {
           visible={this.state.showInterestRateModal}
           animationType="fade"
         >
-          <BlurView intensity={100} style={{ flex: 1 }}>
+          <BlurView intensity={100} style={{ flex: 1 }} tint="dark">
             <View style={styles.interestRateContainer}>
               <TitleText
                 title={"Type Your Interest Rate: "}
-                style={{ color: colors.third, textAlign: "center" }}
+                style={{ color: colors.fifth, textAlign: "center" }}
               />
 
               <View style={{ flexDirection: "row", marginVertical: 40 }}>
-                <Text>Interest Rate: $ </Text>
+                <Text
+                  style={{
+                    color: colors.fourth,
+                    fontWeight: "bold",
+                    textAlignVertical: "center",
+                  }}
+                >
+                  Interest Rate: %{" "}
+                </Text>
 
                 <TextInput
                   textContentType="telephoneNumber"
                   keyboardType="decimal-pad"
                   placeholder="example 0.75"
-                  style={{ borderBottomWidth: 1, width: "50%" }}
+                  style={{
+                    borderBottomWidth: 1,
+                    width: "50%",
+                    borderColor: colors.fifth,
+                    color: colors.fourth,
+                  }}
                   onChangeText={(event) =>
                     this.setState({ interestRate: event })
                   }

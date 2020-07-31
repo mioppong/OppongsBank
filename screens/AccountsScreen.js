@@ -178,17 +178,18 @@ class AccountsScreen extends Component {
           <BlurView
             intensity={100}
             style={{ flex: 1, justifyContent: "center" }}
+            tint="dark"
           >
             <View style={styles.insideModalScreen}>
               <TitleText
-                style={{ color: colors.primary, textAlign: "center" }}
+                style={{ color: colors.fifth, textAlign: "center" }}
                 title="Deposit Amount"
               />
 
               <View style={{ flexDirection: "row", marginVertical: 15 }}></View>
               <View style={{ flexDirection: "row", marginVertical: 15 }}>
                 <Text
-                  style={{ textAlignVertical: "center" }}
+                  style={{ textAlignVertical: "center", color: colors.fourth }}
                   children="Amount : "
                 />
                 <TextInput
@@ -198,7 +199,9 @@ class AccountsScreen extends Component {
                   style={{
                     justifyContent: "center",
                     borderBottomWidth: 1,
-                    borderColor: colors.primary,
+                    borderColor: colors.fifth,
+                    color: colors.fourth,
+                    width: "50%",
                   }}
                 />
               </View>
@@ -215,6 +218,7 @@ class AccountsScreen extends Component {
                     height: 40,
                     width: 40,
                     borderRadius: 10,
+                    marginLeft: 30,
                   }}
                   onPress={() => this.depositModal(false)}
                   iconSize={40}
@@ -226,6 +230,7 @@ class AccountsScreen extends Component {
                     height: 40,
                     width: 40,
                     borderRadius: 10,
+                    marginRight: 30,
                   }}
                   onPress={() => this.handleDepositButton()}
                   iconSize={40}
@@ -245,16 +250,17 @@ class AccountsScreen extends Component {
           <BlurView
             intensity={100}
             style={{ flex: 1, justifyContent: "center" }}
+            tint="dark"
           >
             <View style={styles.insideModalScreen}>
               <TitleText
-                style={{ color: colors.primary, textAlign: "center" }}
+                style={{ color: colors.fifth, textAlign: "center" }}
                 title="PAY WHO?"
               />
 
               <View style={{ flexDirection: "row", marginVertical: 15 }}>
                 <Text
-                  style={{ textAlignVertical: "center" }}
+                  style={{ textAlignVertical: "center", color: colors.fourth }}
                   children="Payee : "
                 />
                 <TextInput
@@ -264,14 +270,16 @@ class AccountsScreen extends Component {
                   style={{
                     justifyContent: "center",
                     borderBottomWidth: 1,
-                    borderColor: colors.primary,
+                    borderColor: colors.fifth,
+                    color: colors.fourth,
+                    width: "50%",
                   }}
                 />
               </View>
 
               <View style={{ flexDirection: "row", marginVertical: 15 }}>
                 <Text
-                  style={{ textAlignVertical: "center" }}
+                  style={{ textAlignVertical: "center", color: colors.fourth }}
                   children="Amount : "
                 />
                 <TextInput
@@ -281,7 +289,9 @@ class AccountsScreen extends Component {
                   style={{
                     justifyContent: "center",
                     borderBottomWidth: 1,
-                    borderColor: colors.primary,
+                    borderColor: colors.fifth,
+                    color: colors.fourth,
+                    width: "50%",
                   }}
                 />
               </View>
@@ -412,10 +422,11 @@ const styles = StyleSheet.create({
   },
   insideModalScreen: {
     alignSelf: "center",
-    width: "60%",
+    width: "70%",
     height: "40%",
     borderRadius: 25,
     marginBottom: "40%",
+    //backgroundColor: colors.fifth,
   },
   transactionsContainer: {
     padding: 20,
