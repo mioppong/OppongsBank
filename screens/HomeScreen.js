@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Image } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
@@ -82,7 +82,16 @@ class HomeScreen extends Component {
   render() {
     return (
       <Screen style={styles.container}>
-        <View style={{ marginLeft: 40 }}>
+        <View style={{ marginLeft: 40, flexDirection: "row" }}>
+          <Image
+            source={require("../assets/logo.png")}
+            style={{
+              width: 30,
+              height: 30,
+              alignSelf: "center",
+              marginRight: 20,
+            }}
+          />
           <TitleText title="Home" />
         </View>
         <ScrollView style={{ flex: 1 }}>

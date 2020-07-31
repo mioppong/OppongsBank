@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, ScrollView } from "react-native";
+import { Text, StyleSheet, View, ScrollView, Image } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
@@ -30,7 +30,17 @@ export default class MoreScreen extends Component {
     const { navigation } = this.props;
     return (
       <Screen style={styles.container}>
-        <View style={{ marginLeft: 40 }}>
+        <View style={{ marginLeft: 40, flexDirection: "row" }}>
+          <Image
+            source={require("../assets/logo.png")}
+            style={{
+              width: 30,
+              height: 30,
+              alignSelf: "center",
+              marginRight: 20,
+            }}
+          />
+
           <TitleText title="More" />
         </View>
         <ScrollView

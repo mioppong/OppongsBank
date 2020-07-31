@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, ScrollView, Picker } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  Picker,
+  Image,
+} from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
@@ -29,8 +36,19 @@ class TransferScreen extends Component {
         <View
           style={{
             marginLeft: 40,
+            flexDirection: "row",
           }}
         >
+          <Image
+            source={require("../assets/logo.png")}
+            style={{
+              width: 30,
+              height: 30,
+              alignSelf: "center",
+              marginRight: 20,
+            }}
+          />
+
           <TitleText title="Transfer" />
         </View>
         <ScrollView>

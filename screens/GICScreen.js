@@ -213,6 +213,7 @@ class GICScreen extends Component {
                 <Text>Interest Rate: $ </Text>
 
                 <TextInput
+                  textContentType="telephoneNumber"
                   keyboardType="decimal-pad"
                   placeholder="example 0.75"
                   style={{ borderBottomWidth: 1, width: "50%" }}
