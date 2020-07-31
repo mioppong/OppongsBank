@@ -155,7 +155,7 @@ const rootReducer = (state = initState, action) => {
           type: TRANSFER,
         });
         break;
-      case 3:
+      case 5:
         state.creditcard.balance += parseInt(action.amount);
 
         state.creditcard.transactions.unshift({
@@ -233,6 +233,17 @@ const rootReducer = (state = initState, action) => {
         state.savings.balance -= parseInt(action.amount);
 
         state.savings.transactions.unshift({
+          id: (transactionId++).toString(),
+          payee: action.payee.payee,
+          amount: action.amount,
+          type: PURCHASE,
+        });
+        break;
+      case 5:
+        console.log(action);
+        state.creditcard.balance -= parseInt(action.amount);
+
+        state.creditcard.transactions.unshift({
           id: (transactionId++).toString(),
           payee: action.payee.payee,
           amount: action.amount,

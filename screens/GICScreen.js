@@ -129,6 +129,7 @@ class GICScreen extends Component {
             />
           </View>
         </View>
+
         <ScrollView>
           <View style={styles.buttonContainer}>
             <CardComponent
