@@ -50,37 +50,34 @@ class GICScreen extends Component {
     console.log("Balance is, ", this.state.interestRate);
     let month3 = 0;
     let month6 = 0;
-    let month9;
-    let year1;
+    let month9 = 0;
+    let year1 = 0;
 
-    let year1month6;
+    let year1month6 = 0;
 
-    let year2;
-    let year3;
-    let year5;
+    let year2 = 0;
+    let year3 = 0;
+    let year5 = 0;
 
-    if (this.state.paidWhen === MONTHLY) {
-      month3 = finance.CI(this.state.interestRate, 1, 100000, 1);
-      month6 = finance.CI(this.state.interestRate, 1, 100000, 1);
-      month9 = finance.CI(this.state.interestRate, 1, 100000, 1);
-      year1 = finance.CI(this.state.interestRate, 1, 100000, 1);
+    if (this.state.paidWhen === ANNUALLY) {
+      month3 = balance;
+      month6 = balance;
+      month9 = balance;
 
-      year1month6 = finance.CI(this.state.interestRate, 1, 100000, 1);
-
-      year2 = finance.CI(this.state.interestRate, 1, 100000, 1);
-      year3 = finance.CI(this.state.interestRate, 1, 100000, 1);
-      year5 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      year1 = finance.FV(this.state.interestRate, balance, 1);
+      year1month6 = finance.FV(this.state.interestRate, balance, 1.5);
+      year2 = finance.FV(this.state.interestRate, balance, 2);
+      year3 = finance.FV(this.state.interestRate, balance, 3);
+      year5 = finance.FV(this.state.interestRate, balance, 5);
     } else if (this.state.paidWhen === MONTHLY) {
-      month3 = finance.CI(this.state.interestRate, 1, 100000, 1);
-      month6 = finance.CI(this.state.interestRate, 1, 100000, 1);
-      month9 = finance.CI(this.state.interestRate, 1, 100000, 1);
-      year1 = finance.CI(this.state.interestRate, 1, 100000, 1);
-
-      year1month6 = finance.CI(this.state.interestRate, 1, 100000, 1);
-
-      year2 = finance.CI(this.state.interestRate, 1, 100000, 1);
-      year3 = finance.CI(this.state.interestRate, 1, 100000, 1);
-      year5 = finance.CI(this.state.interestRate, 1, 100000, 1);
+      month3 = finance.FV(this.state.interestRate / 12, balance, 3);
+      month6 = finance.FV(this.state.interestRate / 12, balance, 6);
+      month9 = finance.FV(this.state.interestRate / 12, balance, 9);
+      year1 = finance.FV(this.state.interestRate / 12, balance, 12);
+      year1month6 = finance.FV(this.state.interestRate / 12, balance, 18);
+      year2 = finance.FV(this.state.interestRate / 12, balance, 24);
+      year3 = finance.FV(this.state.interestRate / 12, balance, 36);
+      year5 = finance.FV(this.state.interestRate / 12, balance, 60);
     }
 
     this.setState({
@@ -95,13 +92,17 @@ class GICScreen extends Component {
       year3: year3,
       year5: year5,
     });
+    console.log(this.state.paidWhen);
   }
 
   paidWhenButtonHandler() {
-    this.setState({
-      showPaidWhenModal: true,
-      paidWhen: this.state.paidWhen === MONTHLY ? ANNUALLY : MONTHLY,
-    });
+    (this.state.paidWhen =
+      this.state.paidWhen === MONTHLY ? ANNUALLY : MONTHLY),
+      this.setState({
+        showPaidWhenModal: true,
+      });
+
+    console.log(this.state.paidWhen);
 
     this.componentDidMount();
   }
