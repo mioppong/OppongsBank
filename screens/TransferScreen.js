@@ -100,7 +100,13 @@ class TransferScreen extends Component {
                 type="DEPOSIT"
               />
               <Amount getAmount={(amount) => (this.amount = amount)} />
-              <AppButton title="Transfer" onPress={this.handleTransferButton} />
+              <AppButton
+                title="Transfer"
+                onPress={this.handleTransferButton}
+                style={{ borderRadius: 10 }}
+                iconName="bank-transfer"
+                iconSize={45}
+              />
             </View>
           </ScrollView>
         </Screen>

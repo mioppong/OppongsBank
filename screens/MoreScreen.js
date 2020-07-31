@@ -63,8 +63,11 @@ export default class MoreScreen extends Component {
           />
 
           <AppButton
+            title="Logout"
             iconName="logout"
-            iconSize={50}
+            style={{
+              borderRadius: 10,
+            }}
             onPress={() => navigation.navigate("Welcome")}
           />
         </ScrollView>
