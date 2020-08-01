@@ -16,8 +16,14 @@ export default class WelcomeScreen extends Component {
     return (
       <Screen style={styles.mainContainer}>
         <View style={styles.titleContainer}>
-          <TitleText style={{ textAlign: "center" }} title="Oppongs Fake" />
-          <TitleText style={{ textAlign: "center" }} title="Bank" />
+          <TitleText
+            style={{ textAlign: "center", fontWeight: "900" }}
+            title="Oppongs Fake"
+          />
+          <TitleText
+            style={{ textAlign: "center", fontWeight: "900" }}
+            title="Bank"
+          />
         </View>
 
         <View style={styles.buttonContainer}>

@@ -172,35 +172,50 @@ class AccountsScreen extends Component {
         {/*---------SHOW DEPOSIT MODAL--------------------------------------------------------------------------------------------------- */}
         <Modal
           visible={this.state.showDepositModal}
-          animationType="fade"
+          animationType="slide"
           transparent={true}
         >
-          <BlurView
-            intensity={100}
-            style={{ flex: 1, justifyContent: "center" }}
-            tint="dark"
+          <View
+            style={{
+              flex: 0.9,
+              marginTop: "30%",
+              backgroundColor: colors.fifth,
+              //justifyContent: "center",
+              borderTopRightRadius: 30,
+              borderTopLeftRadius: 30,
+              padding: 20,
+            }}
           >
             <View style={styles.insideModalScreen}>
               <TitleText
-                style={{ color: colors.fifth, textAlign: "center" }}
+                style={{
+                  color: colors.primary,
+                  textAlign: "center",
+                }}
                 title="Deposit Amount"
               />
 
-              <View style={{ flexDirection: "row", marginVertical: 15 }}></View>
-              <View style={{ flexDirection: "row", marginVertical: 15 }}>
+              <View style={{ flexDirection: "row", marginVertical: 35 }}>
                 <Text
-                  style={{ textAlignVertical: "center", color: colors.fourth }}
+                  style={{
+                    textAlignVertical: "center",
+                    color: colors.primary,
+                    fontWeight: "bold",
+                    fontSize: 20,
+                  }}
                   children="Amount : "
                 />
                 <TextInput
-                  placeholder="Amount"
+                  placeholder="example 76"
+                  placeholderTextColor={colors.mediumGray}
                   onChangeText={(event) => this.setState({ amount: event })}
                   keyboardType="decimal-pad"
                   style={{
                     justifyContent: "center",
                     borderBottomWidth: 1,
-                    borderColor: colors.fifth,
-                    color: colors.fourth,
+                    borderColor: colors.primary,
+                    color: colors.primary,
+                    fontSize: 20,
                     width: "50%",
                   }}
                 />
@@ -238,59 +253,85 @@ class AccountsScreen extends Component {
                 />
               </View>
             </View>
-          </BlurView>
+          </View>
         </Modal>
 
         {/*---------SHOW PURCHASE MODAL--------------------------------------------------------------------------------------------------- */}
         <Modal
           visible={this.state.showPurchaseModal}
-          animationType="fade"
+          animationType="slide"
           transparent={true}
         >
-          <BlurView
-            intensity={100}
-            style={{ flex: 1, justifyContent: "center" }}
-            tint="dark"
+          <View
+            style={{
+              flex: 0.9,
+              marginTop: "30%",
+              backgroundColor: colors.fifth,
+              //justifyContent: "center",
+              borderTopRightRadius: 30,
+              borderTopLeftRadius: 30,
+              padding: 20,
+            }}
           >
             <View style={styles.insideModalScreen}>
               <TitleText
-                style={{ color: colors.fifth, textAlign: "center" }}
+                style={{ color: colors.primary, textAlign: "center" }}
                 title="PAY WHO?"
               />
 
-              <View style={{ flexDirection: "row", marginVertical: 15 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginVertical: 15,
+                  marginTop: 30,
+                }}
+              >
                 <Text
-                  style={{ textAlignVertical: "center", color: colors.fourth }}
+                  style={{
+                    textAlignVertical: "center",
+                    color: colors.primary,
+                    fontWeight: "bold",
+                    fontSize: 20,
+                  }}
                   children="Payee : "
                 />
                 <TextInput
-                  placeholder="Name"
+                  placeholder="place of purchase"
+                  placeholderTextColor={colors.mediumGray}
                   onChangeText={(event) => this.setState({ payee: event })}
                   keyboardType="default"
                   style={{
                     justifyContent: "center",
                     borderBottomWidth: 1,
-                    borderColor: colors.fifth,
-                    color: colors.fourth,
-                    width: "50%",
+                    borderColor: colors.primary,
+                    color: colors.primary,
+                    fontSize: 20,
+                    width: "60%",
                   }}
                 />
               </View>
 
               <View style={{ flexDirection: "row", marginVertical: 15 }}>
                 <Text
-                  style={{ textAlignVertical: "center", color: colors.fourth }}
+                  style={{
+                    textAlignVertical: "center",
+                    color: colors.primary,
+                    fontWeight: "bold",
+                    fontSize: 20,
+                  }}
                   children="Amount : "
                 />
                 <TextInput
-                  placeholder="Amount"
+                  placeholder="example 76"
+                  placeholderTextColor={colors.mediumGray}
                   onChangeText={(event) => this.setState({ amount: event })}
                   keyboardType="decimal-pad"
                   style={{
                     justifyContent: "center",
                     borderBottomWidth: 1,
-                    borderColor: colors.fifth,
-                    color: colors.fourth,
+                    borderColor: colors.primary,
+                    color: colors.primary,
+                    fontSize: 20,
                     width: "50%",
                   }}
                 />
@@ -326,7 +367,7 @@ class AccountsScreen extends Component {
                 />
               </View>
             </View>
-          </BlurView>
+          </View>
         </Modal>
 
         {/*---------DONE MODAL--------------------------------------------------------------------------------------------------- */}
@@ -408,7 +449,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   flatListContainer: {
-    backgroundColor: "red",
+    //backgroundColor: "red",
     flex: 1,
   },
   headerCotainer: {
