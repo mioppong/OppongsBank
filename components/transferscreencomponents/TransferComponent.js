@@ -93,7 +93,5 @@ const styles = StyleSheet.create({
     height: "20%",
     marginVertical: 10,
     alignItems: "center",
-    //borderWidth: 2,
-    //    borderColor: "red",
   },
 });

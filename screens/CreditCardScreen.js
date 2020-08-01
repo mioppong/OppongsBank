@@ -136,9 +136,9 @@ class CreditCardScreen extends Component {
 
         {/*---------SHOW PURCHASE MODAL--------------------------------------------------------------------------------------------------- */}
         <Modal
+          transparent={true}
           visible={this.state.showPurchaseModal}
           animationType="slide"
-          transparent={true}
         >
           <View
             style={{

@@ -176,7 +176,8 @@ class AccountsScreen extends Component {
         >
           <View
             style={{
-              flex: 0.9,
+              width: "100%",
+              height: "100%",
               marginTop: "30%",
               backgroundColor: colors.fifth,
               borderTopRightRadius: 30,
@@ -262,7 +263,8 @@ class AccountsScreen extends Component {
         >
           <View
             style={{
-              flex: 0.9,
+              width: "100%",
+              height: "100%",
               marginTop: "30%",
               backgroundColor: colors.fifth,
               //justifyContent: "center",
