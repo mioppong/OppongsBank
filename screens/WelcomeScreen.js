@@ -4,6 +4,7 @@ import LoginButton from "../components/LoginButton";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
+import AppButton from "../components/AppButton";
 
 export default class WelcomeScreen extends Component {
   home = (params) => {
@@ -27,18 +28,18 @@ export default class WelcomeScreen extends Component {
         </View>
 
         <View style={styles.buttonContainer}>
-          <LoginButton
-            title="Login With"
-            iconName="facebook"
-            buttonColor={colors.third}
-            iconColor={colors.facebook}
-            onPress={this.home}
-          />
-
-          <LoginButton
-            title="Login With"
-            iconName="google"
-            iconColor={colors.white}
+          <AppButton
+            style={{
+              borderRadius: 10,
+              shadowColor: "black",
+              shadowOffset: { width: 2, height: 2 },
+              shadowRadius: 10,
+              shadowOpacity: 0.5,
+              elevation: 10,
+            }}
+            title="Login"
+            iconName="emoticon-happy-outline"
+            //iconColor={colors.white}
             onPress={this.home}
           />
         </View>
