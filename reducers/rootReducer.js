@@ -207,7 +207,6 @@ const rootReducer = (state = initState, action) => {
   } else if (action.type === PURCHASE) {
     //IF IT IS A PURCHASE---------------------------------------------------------------------------------------------------------------------------------------------
     const whichAccount = parseInt(action.to.id);
-    console.log(action);
     switch (whichAccount) {
       case 1:
         state.checking1.balance -= parseInt(action.amount);
@@ -240,7 +239,6 @@ const rootReducer = (state = initState, action) => {
         });
         break;
       case 5:
-        console.log(action);
         state.creditcard.balance -= parseInt(action.amount);
 
         state.creditcard.transactions.unshift({

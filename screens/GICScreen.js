@@ -20,7 +20,6 @@ import TitleText from "../components/TitleText";
 import CardComponent from "../components/gicscreencomponents/CardComponent";
 import WillHave from "../components/gicscreencomponents/WillHave";
 import TransactionComponent from "../components/accountsscreencomponents/TransactionComponent";
-import { BlurView } from "expo-blur";
 import AppButton from "../components/AppButton";
 
 class GICScreen extends Component {
@@ -47,7 +46,6 @@ class GICScreen extends Component {
     const { balance } = this.props.gic;
     var finance = new Finance();
 
-    console.log("Balance is, ", this.state.interestRate);
     let month3 = 0;
     let month6 = 0;
     let month9 = 0;
@@ -92,7 +90,6 @@ class GICScreen extends Component {
       year3: year3,
       year5: year5,
     });
-    console.log(this.state.paidWhen);
   }
 
   paidWhenButtonHandler() {
@@ -102,13 +99,9 @@ class GICScreen extends Component {
         showPaidWhenModal: true,
       });
 
-    console.log(this.state.paidWhen);
-
     this.componentDidMount();
   }
   render() {
-    const { params } = this.props.navigation.state;
-
     return (
       <Screen style={styles.container}>
         <View style={styles.headerCotainer}>

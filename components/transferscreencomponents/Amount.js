@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import colors from "../../config/colors";
-import { color } from "react-native-reanimated";
 
 export default function Amount(props) {
   return (

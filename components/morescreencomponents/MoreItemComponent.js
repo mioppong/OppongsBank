@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Modal } from "react-native";
 import { TouchableOpacity } from "react-native";
-import { BlurView } from "expo-blur";
 import AppButton from "../AppButton";
 import colors from "../../config/colors";
-import { color } from "react-native-reanimated";
-import TitleText from "../TitleText";
 
 export default function MoreItemComponent({ title, content }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -17,18 +14,17 @@ export default function MoreItemComponent({ title, content }) {
       >
         <Text style={{ color: colors.fourth, fontSize: 20 }}>{title}</Text>
       </TouchableOpacity>
-      <Modal transparent={true} visible={modalVisible} animationType="fade">
-        <BlurView intensity={100} style={styles.modalTransparentBackground}>
-          <View style={styles.insideBlurView}>
-            <Text style={styles.maintContentText}>{content}</Text>
-          </View>
 
-          <AppButton
-            iconName="close"
-            style={{ backgroundColor: colors.fifth }}
-            onPress={() => setModalVisible(false)}
-          />
-        </BlurView>
+      <Modal transparent={true} visible={modalVisible} animationType="slide">
+        <View style={styles.insideModal}>
+          <Text style={styles.maintContentText}>{content}</Text>
+        </View>
+
+        <AppButton
+          iconName="close"
+          style={{ backgroundColor: colors.fifth, alignSelf: "center" }}
+          onPress={() => setModalVisible(false)}
+        />
       </Modal>
     </>
   );
@@ -46,11 +42,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.fifth,
   },
-  insideBlurView: {
+  insideModal: {
     width: 200,
     height: 300,
     backgroundColor: colors.secondary,
     borderRadius: 10,
+    marginTop: "30%",
     marginBottom: 15,
     shadowColor: "black",
     shadowOffset: { width: 2, height: 2 },
@@ -58,6 +55,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     elevation: 10,
     padding: 10,
+    alignSelf: "center",
   },
   maintContentText: {
     color: colors.fourth,

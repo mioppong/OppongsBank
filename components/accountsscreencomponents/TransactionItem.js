@@ -1,10 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { color } from "react-native-reanimated";
 import colors from "../../config/colors";
 
 export default function TransactionItem({ from, to, amount, type, payee }) {
-  console.log("transaction type", type);
   if (type === "TRANSFER") {
     return (
       <View>

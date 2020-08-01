@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native";
 import colors from "../../config/colors";
-import { color } from "react-native-reanimated";
 
 export default function PickerItem({ label, onPress }) {
   return (

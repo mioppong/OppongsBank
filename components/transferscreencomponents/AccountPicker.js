@@ -9,9 +9,6 @@ import {
 } from "react-native";
 import Icon from "../Icon";
 import colors from "../../config/colors";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Button } from "react-native-paper";
-import Screen from "../Screen";
 import PickerItem from "./PickerItem";
 import { BlurView } from "expo-blur";
 import AppButton from "../AppButton";

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, ScrollView, Image } from "react-native";
+import { StyleSheet, View, ScrollView, Image } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
-import { Button } from "react-native";
 import AppButton from "../components/AppButton";
 import MoreItemComponent from "../components/morescreencomponents/MoreItemComponent";
 

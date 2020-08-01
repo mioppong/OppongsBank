@@ -11,7 +11,6 @@ import TitleText from "../components/TitleText";
 import AppButton from "../components/AppButton";
 import Icon from "../components/Icon";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { BlurView } from "expo-blur";
 import { connect } from "react-redux";
 import TransactionComponent from "../components/accountsscreencomponents/TransactionComponent";
 

@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import LoginButton from "../components/LoginButton";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
 import AppButton from "../components/AppButton";
 
 export default class WelcomeScreen extends Component {
-  home = (params) => {
-    console.log("aye");
+  home = () => {
     const { navigation } = this.props;
-    navigation.navigate("Home", { level: 1, name: "oppong" });
+    navigation.navigate("Home");
   };
 
   render() {
@@ -39,7 +37,6 @@ export default class WelcomeScreen extends Component {
             }}
             title="Login"
             iconName="emoticon-happy-outline"
-            //iconColor={colors.white}
             onPress={this.home}
           />
         </View>

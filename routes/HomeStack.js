@@ -2,19 +2,15 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import HomeScreen from "../screens/HomeScreen";
-import Header from "../components/Header";
 import React from "react";
 import colors from "../config/colors";
 import AccountsScreen from "../screens/AccountsScreen";
-import { createBottomTabNavigator } from "react-navigation-tabs";
 import TransferScreen from "../screens/TransferScreen";
 import MoreScreen from "../screens/MoreScreen";
 import CreditCardScreen from "../screens/CreditCardScreen";
 import GICScreen from "../screens/GICScreen";
-
 import Icon from "../components/Icon";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
-import { View } from "react-native";
 
 const accScreens = {
   Home: {

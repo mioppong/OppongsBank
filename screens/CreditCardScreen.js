@@ -14,10 +14,8 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import TitleText from "../components/TitleText";
-import { BlurView } from "expo-blur";
 import AppButton from "../components/AppButton";
 import TransactionComponent from "../components/accountsscreencomponents/TransactionComponent";
-import TransferComponent from "../components/transferscreencomponents/TransferComponent";
 
 class CreditCardScreen extends Component {
   constructor(props) {
@@ -44,12 +42,10 @@ class CreditCardScreen extends Component {
       this.state.amount === 0 ||
       isNaN(this.state.amount)
     ) {
-      console.log("Missing Somethin");
     } else {
       this.state.type = PURCHASE;
       this.purchaseModal(false);
 
-      const { params } = this.props.navigation.state;
       this.props.addTransaction(
         this.state.amount,
         this.props.creditcard,
@@ -73,8 +69,6 @@ class CreditCardScreen extends Component {
   };
 
   render() {
-    const { params } = this.props.navigation.state;
-
     return (
       <>
         <Screen style={styles.container}>

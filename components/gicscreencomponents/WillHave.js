@@ -9,7 +9,7 @@ export default function WillHave({ date, amount }) {
         In <Text children={date} style={styles.dateText} /> you will have{" "}
         <Text
           children={
-            "$-" +
+            "$ " +
             amount.toLocaleString(undefined, { minimumFractionDigits: 2 })
           }
           style={styles.amountText}

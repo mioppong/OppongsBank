@@ -1,20 +1,11 @@
 import React, { Component } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  ScrollView,
-  Picker,
-  Image,
-  Modal,
-} from "react-native";
+import { StyleSheet, View, ScrollView, Image, Modal } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
 import TransferComponent from "../components/transferscreencomponents/TransferComponent";
 import Amount from "../components/transferscreencomponents/Amount";
 import AppButton from "../components/AppButton";
-import AccountPicker from "../components/transferscreencomponents/AccountPicker";
 import { connect } from "react-redux";
 
 class TransferScreen extends Component {
@@ -40,7 +31,6 @@ class TransferScreen extends Component {
       isNaN(this.amount) ||
       this.from.id === this.to.id
     ) {
-      console.log("missing something");
       this.missingInputModal();
     } else {
       this.doneModalHandler();
@@ -169,7 +159,6 @@ const styles = StyleSheet.create({
   },
   insideContainer: {
     flex: 1,
-    //backgroundColor: colors.third,
     alignItems: "center",
     marginVertical: 10,
   },
