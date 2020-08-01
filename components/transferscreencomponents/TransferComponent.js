@@ -26,6 +26,7 @@ export default function TransferComponent(props) {
               setSelectedAccount1(item);
               props.from(item);
             }}
+            title="FROM"
             items={allAccounts}
             placeholder="Account"
             icon="bank-transfer-out"
@@ -40,6 +41,7 @@ export default function TransferComponent(props) {
 
         <View style={styles.containerChooseAccount}>
           <AccountPicker
+            title="TO"
             selectedItem={selectedAccount2}
             onSelectItem={(item) => {
               setSelectedAccount2(item);

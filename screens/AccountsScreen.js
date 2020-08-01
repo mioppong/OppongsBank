@@ -10,7 +10,7 @@ import colors from "../config/colors";
 import TitleText from "../components/TitleText";
 import AppButton from "../components/AppButton";
 import Icon from "../components/Icon";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import TransactionComponent from "../components/accountsscreencomponents/TransactionComponent";
 
@@ -179,7 +179,6 @@ class AccountsScreen extends Component {
               flex: 0.9,
               marginTop: "30%",
               backgroundColor: colors.fifth,
-              //justifyContent: "center",
               borderTopRightRadius: 30,
               borderTopLeftRadius: 30,
               padding: 20,

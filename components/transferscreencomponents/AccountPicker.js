@@ -20,6 +20,7 @@ export default function AccountPicker({
   placeholder,
   onSelectItem,
   selectedItem,
+  title,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -37,9 +38,10 @@ export default function AccountPicker({
 
       {/*------------------------------------------MODAL SCREEN------------------------------------------*/}
 
-      <Modal transparent={true} visible={modalVisible} animationType="fade">
-        <BlurView intensity={100} style={styles.modalTransparentBackground}>
+      <Modal transparent={true} visible={modalVisible} animationType="slide">
+        <View style={styles.mainModalContainer}>
           <View style={styles.insideScreenModal}>
+            <Text style={{ fontSize: 30, fontWeight: "bold" }}> {title}</Text>
             <FlatList
               data={items}
               keyExtractor={(item) => item.id.toString()}
@@ -55,11 +57,12 @@ export default function AccountPicker({
             />
             <AppButton
               iconName="close"
-              style={{ backgroundColor: colors.fifth }}
+              iconSize={45}
+              style={{ backgroundColor: colors.primary, height: 50, width: 50 }}
               onPress={() => setModalVisible(false)}
             />
           </View>
-        </BlurView>
+        </View>
       </Modal>
       {/*------------------------------------------MODAL SCREEN------------------------------------------*/}
     </>
@@ -91,6 +94,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     elevation: 10,
   },
+  mainModalContainer: {
+    flex: 0.9,
+    marginTop: "30%",
+    backgroundColor: colors.fifth,
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
+    padding: 20,
+    alignItems: "center",
+  },
+
   modalTransparentBackground: {
     flex: 1,
     justifyContent: "center",
