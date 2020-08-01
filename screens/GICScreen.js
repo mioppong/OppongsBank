@@ -201,21 +201,31 @@ class GICScreen extends Component {
         <Modal
           transparent={true}
           visible={this.state.showInterestRateModal}
-          animationType="fade"
+          animationType="slide"
         >
-          <BlurView intensity={100} style={{ flex: 1 }} tint="dark">
+          <View
+            style={{
+              flex: 0.9,
+              marginTop: "30%",
+              backgroundColor: colors.fifth,
+              borderTopRightRadius: 30,
+              borderTopLeftRadius: 30,
+              padding: 20,
+            }}
+          >
             <View style={styles.interestRateContainer}>
               <TitleText
                 title={"Type Your Interest Rate: "}
-                style={{ color: colors.fifth, textAlign: "center" }}
+                style={{ color: colors.primary, textAlign: "center" }}
               />
 
               <View style={{ flexDirection: "row", marginVertical: 40 }}>
                 <Text
                   style={{
-                    color: colors.fourth,
-                    fontWeight: "bold",
                     textAlignVertical: "center",
+                    color: colors.primary,
+                    fontWeight: "bold",
+                    fontSize: 20,
                   }}
                 >
                   Interest Rate: %{" "}
@@ -224,12 +234,15 @@ class GICScreen extends Component {
                 <TextInput
                   textContentType="telephoneNumber"
                   keyboardType="decimal-pad"
-                  placeholder="example 0.75"
+                  placeholder="yearly interest"
+                  placeholderTextColor={colors.mediumGray}
                   style={{
+                    justifyContent: "center",
                     borderBottomWidth: 1,
-                    width: "50%",
-                    borderColor: colors.fifth,
-                    color: colors.fourth,
+                    borderColor: colors.primary,
+                    color: colors.primary,
+                    fontSize: 20,
+                    width: "60%",
                   }}
                   onChangeText={(event) =>
                     this.setState({ interestRate: event })
@@ -243,7 +256,7 @@ class GICScreen extends Component {
                 style={{ alignSelf: "center", height: 50, width: 50 }}
               />
             </View>
-          </BlurView>
+          </View>
         </Modal>
       </Screen>
     );
@@ -309,7 +322,6 @@ const styles = StyleSheet.create({
     height: "70%",
     borderRadius: 20,
     alignSelf: "center",
-    justifyContent: "center",
     flex: 1,
   },
 });
