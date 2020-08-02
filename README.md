@@ -1,6 +1,14 @@
+---
+title: My Fake Bank
+published: true
+description: 
+tags: reactnative,react,project,android
+//cover_image: https://direct_url_to_image.jpg
+---
+
 # Oppongs Fake Bank - React
 
-I made this app because i am still in the process of learning how to use react native, I chose this, because  wanted to learn how to use redux as well.
+I made this app because I am still in the process of learning how to use react native, I chose this because I wanted to learn how to use Redux as well.
 
 ## Getting Started
 
@@ -24,7 +32,7 @@ expo start
 
 ## Future Work
 
-- In the future I hope to be able to add an online feature where you can authenticate and connect to an online databse.
+- In the future, I hope to be able to add an online feature where you can authenticate and connect to an online database.
   
 ## Acknowledgments
 
@@ -42,4 +50,4 @@ expo start
 
  [Here](https://play.google.com/store/apps/details?id=com.its_oppong_studios.OppongsBank)
 
- there isnt a link to the ios store because i broke :(
+ there isn't a link to the ios store because I am broke :(
