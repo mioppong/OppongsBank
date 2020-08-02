@@ -42,15 +42,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   balanceText: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: "bold",
     textAlign: "center",
     color: colors.fourth,
   },
 
   container: {
-    width: 180,
-    height: 108,
+    width: "60%",
+    height: 110,
     backgroundColor: colors.primary,
     marginTop: 20,
     borderRadius: 15,

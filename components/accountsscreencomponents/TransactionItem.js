@@ -1,12 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import colors from "../../config/colors";
 
 export default function TransactionItem({ from, to, amount, type, payee }) {
+  amount = parseInt(amount).toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+  });
   if (type === "TRANSFER") {
     return (
-      <View>
-        <View style={{ marginBottom: -20, marginTop: 30 }}>
+      <View style={styles.mainContainer}>
+        <View>
           <Text
             children={type}
             style={{
@@ -16,29 +19,31 @@ export default function TransactionItem({ from, to, amount, type, payee }) {
             }}
           />
         </View>
+        <ScrollView horizontal={true}>
+          <View style={styles.container}>
+            <Text style={styles.fromStorage}>
+              <Text style={styles.typeTitleText} children={"From: "} />
 
-        <View style={styles.container}>
-          <Text style={styles.fromStorage}>
-            <Text style={styles.typeTitleText} children={"From: "} />
-            {from}
-          </Text>
-          <Text style={styles.fromStorage}>
-            <Text style={styles.typeTitleText} children={"To: "} />
-            {to}
-          </Text>
+              {from}
+            </Text>
+            <Text style={styles.fromStorage}>
+              <Text style={styles.typeTitleText} children={"To: "} />
+              {to}
+            </Text>
 
-          <Text style={styles.fromStorage}>
-            <Text style={styles.typeTitleText} children={"Amount: "} />
-            {amount}
-          </Text>
-        </View>
+            <Text style={styles.fromStorage}>
+              <Text style={styles.typeTitleText} children={"Amount: "} />
+              {amount}
+            </Text>
+          </View>
+        </ScrollView>
         <View style={styles.coolLine} />
       </View>
     );
   } else if (type === "DEPOSIT") {
     return (
-      <View>
-        <View style={{ marginBottom: -20, marginTop: 30 }}>
+      <View style={styles.mainContainer}>
+        <View>
           <Text
             children={type}
             style={{
@@ -48,24 +53,27 @@ export default function TransactionItem({ from, to, amount, type, payee }) {
             }}
           />
         </View>
+        <ScrollView horizontal={true}>
+          <View style={styles.container}>
+            <Text style={styles.fromStorage}>
+              <Text style={styles.typeTitleText} children={"To : "} />
+              {to}
+            </Text>
 
-        <View style={styles.container}>
-          <Text style={styles.fromStorage}>
-            <Text style={styles.typeTitleText} children={"To : "} />
-            {to}
-          </Text>
+            <Text style={styles.fromStorage}>
+              <Text style={styles.typeTitleText} children={"Amount: "} />
+              {amount}
+            </Text>
+          </View>
+        </ScrollView>
 
-          <Text style={styles.fromStorage}>
-            <Text style={styles.typeTitleText} children={"Amount: "} />
-            {amount}
-          </Text>
-        </View>
+        <View style={styles.coolLine} />
       </View>
     );
   } else if (type === "PURCHASE") {
     return (
-      <View>
-        <View style={{ marginBottom: -20, marginTop: 30 }}>
+      <View style={styles.mainContainer}>
+        <View>
           <Text
             children={type}
             style={{
@@ -75,17 +83,22 @@ export default function TransactionItem({ from, to, amount, type, payee }) {
             }}
           />
         </View>
-        <View style={styles.container}>
-          <Text style={styles.fromStorage}>
-            <Text style={styles.typeTitleText} children={"Payee: "} />
-            {payee}
-          </Text>
 
-          <Text style={styles.fromStorage}>
-            <Text style={styles.typeTitleText} children={"Amount: "} />
-            {amount}
-          </Text>
-        </View>
+        <ScrollView horizontal={true}>
+          <View style={styles.container}>
+            <Text style={styles.fromStorage}>
+              <Text style={styles.typeTitleText} children={"Payee: "} />
+              {payee}
+            </Text>
+
+            <Text style={styles.fromStorage}>
+              <Text style={styles.typeTitleText} children={"Amount: "} />
+              {amount}
+            </Text>
+          </View>
+        </ScrollView>
+
+        <View style={styles.coolLine} />
       </View>
     );
   }
@@ -97,9 +110,8 @@ const styles = StyleSheet.create({
     height: 60,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
+    //alignItems: "center",
     flex: 1,
-    marginVertical: 10,
   },
   coolLine: {
     width: "80%",
@@ -110,6 +122,10 @@ const styles = StyleSheet.create({
   fromStorage: {
     color: colors.fourth,
     fontWeight: "bold",
+    margin: 10,
+  },
+  mainContainer: {
+    marginTop: 20,
   },
   typeTitleText: {
     color: colors.third,

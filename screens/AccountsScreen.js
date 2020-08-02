@@ -101,6 +101,9 @@ class AccountsScreen extends Component {
   };
   render() {
     const { params } = this.props.navigation.state;
+    params.balance = params.balance.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+    });
 
     return (
       <>
@@ -126,7 +129,10 @@ class AccountsScreen extends Component {
 
           <View style={styles.balanceContainer}>
             <Text style={styles.balanceTitle}>Your Balance:</Text>
-            <Text style={styles.balanceText}> $ {params.balance}</Text>
+            <Text minimumFontScale={0.01} style={styles.balanceText}>
+              {" "}
+              $ {params.balance}
+            </Text>
           </View>
 
           <View style={{ flexDirection: "row", alignSelf: "center" }}>
@@ -435,7 +441,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   balanceText: {
-    fontSize: 40,
+    marginTop: 15,
+    fontSize: 20,
     color: colors.fifth,
     alignSelf: "center",
     fontWeight: "bold",

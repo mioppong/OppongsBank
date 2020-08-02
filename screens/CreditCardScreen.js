@@ -69,6 +69,18 @@ class CreditCardScreen extends Component {
   };
 
   render() {
+    this.props.creditcard.balance = parseInt(
+      this.props.creditcard.balance
+    ).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+    });
+
+    this.props.creditcard.capacity = parseInt(
+      this.props.creditcard.capacity
+    ).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+    });
+
     return (
       <>
         <Screen style={styles.container}>
@@ -142,7 +154,8 @@ class CreditCardScreen extends Component {
         >
           <View
             style={{
-              flex: 0.9,
+              width: "100%",
+              height: "100%",
               marginTop: "30%",
               backgroundColor: colors.fifth,
               borderTopRightRadius: 30,
@@ -297,7 +310,7 @@ const styles = StyleSheet.create({
   },
   balanceText: {
     marginTop: 15,
-    fontSize: 20,
+    fontSize: 15,
     color: colors.fifth,
     fontWeight: "bold",
     textAlign: "center",

@@ -102,6 +102,12 @@ class GICScreen extends Component {
     this.componentDidMount();
   }
   render() {
+    this.props.gic.balance = parseInt(this.props.gic.balance).toLocaleString(
+      undefined,
+      {
+        minimumFractionDigits: 2,
+      }
+    );
     return (
       <Screen style={styles.container}>
         <View style={styles.headerCotainer}>

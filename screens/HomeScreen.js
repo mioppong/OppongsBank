@@ -63,15 +63,27 @@ class HomeScreen extends Component {
         (this.props.checking1.balance > 0 ? this.props.checking1.balance : 0) +
         (this.props.checking2.balance > 0 ? this.props.checking2.balance : 0) +
         (this.props.savings.balance > 0 ? this.props.savings.balance : 0) +
-        (this.props.gic.balance > 0 ? this.props.gic.balance : 0);
+        (this.props.gic.balance > 0 ? this.props.gic.balance : 0) +
+        (this.props.creditcard.balance > this.props.creditcard.capacity
+          ? this.props.creditcard.balance - this.props.creditcard.capacity
+          : 0);
 
       let totalOwe =
         (this.props.checking1.balance < 0 ? this.props.checking1.balance : 0) +
         (this.props.checking2.balance < 0 ? this.props.checking2.balance : 0) +
         (this.props.savings.balance < 0 ? this.props.savings.balance : 0) +
         (this.props.gic.balance < 0 ? this.props.gic.balance : 0) +
-        (this.props.creditcard.capacity - this.props.creditcard.balance);
+        (this.props.creditcard.balance < this.props.creditcard.capacity
+          ? this.props.creditcard.capacity - this.props.creditcard.balance
+          : 0);
 
+      totalHave = parseInt(totalHave).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+      });
+
+      totalOwe = parseInt(totalOwe).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+      });
       this.setState({
         totalHave: totalHave,
         totalOwe: totalOwe,
@@ -80,6 +92,36 @@ class HomeScreen extends Component {
   }
 
   render() {
+    let formatedChecking1 = parseInt(
+      this.props.checking1.balance
+    ).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+    });
+
+    let formatedChecking2 = parseInt(
+      this.props.checking2.balance
+    ).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+    });
+
+    let formatedSavings = parseInt(this.props.savings.balance).toLocaleString(
+      undefined,
+      {
+        minimumFractionDigits: 2,
+      }
+    );
+    let formatedGic = parseInt(this.props.gic.balance).toLocaleString(
+      undefined,
+      {
+        minimumFractionDigits: 2,
+      }
+    );
+    let formatedCreditCard = parseInt(
+      this.props.creditcard.balance
+    ).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+    });
+
     return (
       <Screen style={styles.container}>
         <View style={{ marginLeft: 40, flexDirection: "row" }}>
@@ -103,33 +145,33 @@ class HomeScreen extends Component {
           >
             <AccountsCard
               accountType="Checking 1"
-              balance={this.props.checking1.balance}
+              balance={"$ " + formatedChecking1}
               accountNumber="1"
               onPress={() => this.accountPressedHandler(1)}
             />
 
             <AccountsCard
               accountType="Checking 2"
-              balance={this.props.checking2.balance}
+              balance={"$ " + formatedChecking2}
               accountNumber="2"
               onPress={() => this.accountPressedHandler(2)}
             />
             <AccountsCard
               accountType="Savings"
               accountNumber="3"
-              balance={this.props.savings.balance}
+              balance={"$ " + formatedSavings}
               onPress={() => this.accountPressedHandler(3)}
             />
             <AccountsCard
               accountType="GIC"
-              balance={this.props.gic.balance}
+              balance={"$ " + formatedGic}
               accountNumber="4"
               onPress={() => this.accountPressedHandler(4)}
             />
             <AccountsCard
               accountNumber="5"
               accountType="Credit Card"
-              balance={this.props.creditcard.balance}
+              balance={"$ " + formatedCreditCard}
               onPress={() => this.accountPressedHandler(5)}
             />
           </View>
