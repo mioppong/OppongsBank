@@ -27,6 +27,8 @@ class CreditCardScreen extends Component {
       amount: 0,
       type: PURCHASE,
       doneModal: false,
+      balanceString: "",
+      capacityString: "",
     };
   }
 
@@ -69,13 +71,13 @@ class CreditCardScreen extends Component {
   };
 
   render() {
-    this.props.creditcard.balance = parseInt(
+    this.state.balanceString = parseInt(
       this.props.creditcard.balance
     ).toLocaleString(undefined, {
       minimumFractionDigits: 2,
     });
 
-    this.props.creditcard.capacity = parseInt(
+    this.state.capacityString = parseInt(
       this.props.creditcard.capacity
     ).toLocaleString(undefined, {
       minimumFractionDigits: 2,
@@ -110,14 +112,14 @@ class CreditCardScreen extends Component {
             <View style={styles.balanceContainer}>
               <Text style={styles.balanceTitle}>Your Capacity:</Text>
               <Text style={styles.balanceText}>
-                $ {this.props.creditcard.capacity}
+                $ {this.state.capacityString}
               </Text>
             </View>
 
             <View style={styles.balanceContainer}>
               <Text style={styles.balanceTitle}>Your Balance:</Text>
               <Text style={styles.balanceText}>
-                $ {this.props.creditcard.balance}
+                $ {this.state.balanceString}
               </Text>
             </View>
           </View>

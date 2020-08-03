@@ -157,7 +157,7 @@ const rootReducer = (state = initState, action) => {
         break;
       case 5:
         state.creditcard.balance += parseInt(action.amount);
-
+        console.log("credit card balance is", state.creditcard.balance);
         state.creditcard.transactions.unshift({
           id: (transactionId++).toString(),
           from: action.from.label,
