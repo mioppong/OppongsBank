@@ -19,7 +19,7 @@ export default class MoreScreen extends Component {
       {
         title: "Jaigoh",
         content:
-          "This is a promo for Jaigoh. He makes amazing music, Search SoundCloud 'Jaigoh' or press the button below the image",
+          "This is a promo for my amigo Jaigoh. He makes amazing music, Search SoundCloud 'Jaigoh' or press the button below the image",
         urlPic:
           "https://i1.sndcdn.com/avatars-000750509287-66lj5y-t500x500.jpg",
         urlLink: "https://soundcloud.com/jaigoh",
