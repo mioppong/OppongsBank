@@ -13,16 +13,24 @@ export default class MoreScreen extends Component {
         title: "This is Not a Real Bank",
         content:
           "This app was made for the purpose of teaching and young people, how to use a bank and what you can do with it, essentially education",
+        urlPic: "",
+        urlLink: "",
       },
       {
-        title: "Promotiion - Jaigoh",
+        title: "Jaigoh",
         content:
-          "This is a promo for my boy Jaigoh, who makes music, Search SoundCloud 'Jaigoh'",
+          "This is a promo for Jaigoh. He makes amazing music, Search SoundCloud 'Jaigoh' or press the button below the image",
+        urlPic:
+          "https://i1.sndcdn.com/avatars-000750509287-66lj5y-t500x500.jpg",
+        urlLink: "https://soundcloud.com/jaigoh",
       },
       {
-        title: "Promotiion - Monica Guzman",
+        title: "Monica Guzman",
         content:
-          "This is a promo for my amiga Monica Guzman, who makes music, Search on Apple Music, SoundCloud, Spotify and Youtube 'Monica Guzman'",
+          "This is a promo for my amiga Monica Guzman, who makes music, Search on Apple Music, SoundCloud, Spotify and Youtube 'Monica Guzman' or click the button below the image'",
+        urlPic:
+          "https://instagram.fymy1-1.fna.fbcdn.net/v/t51.2885-15/e35/72308594_561869707949383_9188217833705983893_n.jpg?_nc_ht=instagram.fymy1-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=Tg9lxEWDiroAX9GVBzm&oh=d11ab037ebf4794b990977c88112d260&oe=5F5F2E15",
+        urlLink: "https://www.instagram.com/_monicaguzman_/",
       },
     ];
 
@@ -47,18 +55,17 @@ export default class MoreScreen extends Component {
           contentContainerStyle={{ alignItems: "center" }}
         >
           <MoreItemComponent
-            title={stuffForMoreScreen[0].title}
-            content={stuffForMoreScreen[0].content}
-          />
-
-          <MoreItemComponent
             title={stuffForMoreScreen[1].title}
             content={stuffForMoreScreen[1].content}
+            urlPic={stuffForMoreScreen[1].urlPic}
+            urlLink={stuffForMoreScreen[1].urlLink}
           />
 
           <MoreItemComponent
             title={stuffForMoreScreen[2].title}
             content={stuffForMoreScreen[2].content}
+            urlPic={stuffForMoreScreen[2].urlPic}
+            urlLink={stuffForMoreScreen[2].urlLink}
           />
 
           <AppButton

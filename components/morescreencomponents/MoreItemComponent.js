@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Modal } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Modal,
+  ImageBackground,
+  Image,
+} from "react-native";
 import { TouchableOpacity } from "react-native";
 import AppButton from "../AppButton";
 import colors from "../../config/colors";
+import * as Linking from "expo-linking";
 
-export default function MoreItemComponent({ title, content }) {
+export default function MoreItemComponent({ title, content, urlPic, urlLink }) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -17,14 +25,42 @@ export default function MoreItemComponent({ title, content }) {
 
       <Modal transparent={true} visible={modalVisible} animationType="slide">
         <View style={styles.insideModal}>
-          <Text style={styles.maintContentText}>{content}</Text>
-        </View>
+          <AppButton
+            iconName="close"
+            style={{
+              backgroundColor: colors.primary,
+              alignSelf: "center",
+              width: 50,
+              height: 50,
+            }}
+            onPress={() => setModalVisible(false)}
+          />
+          <Text
+            style={{
+              fontSize: 40,
+              marginVertical: 10,
+              fontWeight: "bold",
+              color: colors.primary,
+            }}
+          >
+            {title}
+          </Text>
 
-        <AppButton
-          iconName="close"
-          style={{ backgroundColor: colors.fifth, alignSelf: "center" }}
-          onPress={() => setModalVisible(false)}
-        />
+          <Text style={styles.maintContentText}>{content}</Text>
+          <View style={styles.imageContainer}>
+            <Image
+              style={styles.imageStyle}
+              source={{
+                uri: urlPic,
+              }}
+            />
+          </View>
+          <AppButton
+            iconName="account-search"
+            style={{ alignSelf: "center", width: 50, height: 50 }}
+            onPress={() => Linking.openURL(urlLink)}
+          />
+        </View>
       </Modal>
     </>
   );
@@ -42,23 +78,37 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.fifth,
   },
-  insideModal: {
-    width: 200,
-    height: 300,
-    backgroundColor: colors.secondary,
-    borderRadius: 10,
-    marginTop: "30%",
-    marginBottom: 15,
-    shadowColor: "black",
-    shadowOffset: { width: 2, height: 2 },
-    shadowRadius: 10,
-    shadowOpacity: 0.5,
-    elevation: 10,
-    padding: 10,
-    alignSelf: "center",
+  imageContainer: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+
+    elevation: 24,
   },
+  imageStyle: {
+    width: 300,
+    height: 300,
+    alignSelf: "center",
+    borderRadius: 20,
+    marginVertical: 40,
+  },
+
+  insideModal: {
+    width: "100%",
+    height: "100%",
+    marginTop: "30%",
+    backgroundColor: colors.fifth,
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
+    padding: 20,
+  },
+
   maintContentText: {
-    color: colors.fourth,
+    color: colors.primary,
     fontSize: 20,
     textTransform: "capitalize",
   },

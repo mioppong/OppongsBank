@@ -15,6 +15,40 @@ class HomeScreen extends Component {
       totalHave: 0,
       totalOwe: 0,
     };
+
+    const { navigation } = this.props;
+
+    navigation.addListener("willFocus", () => {
+      let totalHave =
+        (this.props.checking1.balance > 0 ? this.props.checking1.balance : 0) +
+        (this.props.checking2.balance > 0 ? this.props.checking2.balance : 0) +
+        (this.props.savings.balance > 0 ? this.props.savings.balance : 0) +
+        (this.props.gic.balance > 0 ? this.props.gic.balance : 0) +
+        (this.props.creditcard.balance > this.props.creditcard.capacity
+          ? this.props.creditcard.balance - this.props.creditcard.capacity
+          : 0);
+
+      let totalOwe =
+        (this.props.checking1.balance < 0 ? this.props.checking1.balance : 0) +
+        (this.props.checking2.balance < 0 ? this.props.checking2.balance : 0) +
+        (this.props.savings.balance < 0 ? this.props.savings.balance : 0) +
+        (this.props.gic.balance < 0 ? this.props.gic.balance : 0) +
+        (this.props.creditcard.balance < this.props.creditcard.capacity
+          ? this.props.creditcard.capacity - this.props.creditcard.balance
+          : 0);
+
+      totalHave = parseInt(totalHave).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+      });
+
+      totalOwe = parseInt(totalOwe).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+      });
+      this.setState({
+        totalHave: totalHave,
+        totalOwe: totalOwe,
+      });
+    });
   }
 
   accountPressedHandler = (args) => {
@@ -55,41 +89,7 @@ class HomeScreen extends Component {
     }
   };
 
-  componentDidMount() {
-    const { navigation } = this.props;
-
-    navigation.addListener("willFocus", () => {
-      let totalHave =
-        (this.props.checking1.balance > 0 ? this.props.checking1.balance : 0) +
-        (this.props.checking2.balance > 0 ? this.props.checking2.balance : 0) +
-        (this.props.savings.balance > 0 ? this.props.savings.balance : 0) +
-        (this.props.gic.balance > 0 ? this.props.gic.balance : 0) +
-        (this.props.creditcard.balance > this.props.creditcard.capacity
-          ? this.props.creditcard.balance - this.props.creditcard.capacity
-          : 0);
-
-      let totalOwe =
-        (this.props.checking1.balance < 0 ? this.props.checking1.balance : 0) +
-        (this.props.checking2.balance < 0 ? this.props.checking2.balance : 0) +
-        (this.props.savings.balance < 0 ? this.props.savings.balance : 0) +
-        (this.props.gic.balance < 0 ? this.props.gic.balance : 0) +
-        (this.props.creditcard.balance < this.props.creditcard.capacity
-          ? this.props.creditcard.capacity - this.props.creditcard.balance
-          : 0);
-
-      totalHave = parseInt(totalHave).toLocaleString(undefined, {
-        minimumFractionDigits: 2,
-      });
-
-      totalOwe = parseInt(totalOwe).toLocaleString(undefined, {
-        minimumFractionDigits: 2,
-      });
-      this.setState({
-        totalHave: totalHave,
-        totalOwe: totalOwe,
-      });
-    });
-  }
+  componentDidMount() {}
 
   render() {
     let formatedChecking1 = parseInt(
