@@ -102,12 +102,8 @@ class GICScreen extends Component {
     this.componentDidMount();
   }
   render() {
-    this.props.gic.balance = parseInt(this.props.gic.balance).toLocaleString(
-      undefined,
-      {
-        minimumFractionDigits: 2,
-      }
-    );
+    //we convert the string to a int then to a localeString
+    let balance = parseFloat(this.props.gic.balance);
     return (
       <Screen style={styles.container}>
         <View style={styles.headerCotainer}>
@@ -131,10 +127,7 @@ class GICScreen extends Component {
 
         <ScrollView>
           <View style={styles.buttonContainer}>
-            <CardComponent
-              cardTitle="Balance"
-              amount={this.props.gic.balance}
-            />
+            <CardComponent cardTitle="Balance" amount={balance} />
 
             <CardComponent
               cardTitle="Interest Rate"
