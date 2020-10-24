@@ -5,6 +5,10 @@ import colors from "../config/colors";
 import TitleText from "../components/TitleText";
 import AppButton from "../components/AppButton";
 import MoreItemComponent from "../components/morescreencomponents/MoreItemComponent";
+import { AdMobBanner } from "expo-ads-admob";
+import config2 from '../config'
+
+
 
 export default class MoreScreen extends Component {
   render() {
@@ -35,6 +39,10 @@ export default class MoreScreen extends Component {
     ];
 
     const { navigation } = this.props;
+    const bannerError = (e) =>{
+      console.log(e)
+    }
+    
     return (
       <Screen style={styles.container}>
         <View style={{ marginLeft: 40, flexDirection: "row" }}>
@@ -76,6 +84,17 @@ export default class MoreScreen extends Component {
             }}
             onPress={() => navigation.navigate("Welcome")}
           />
+
+
+        <AdMobBanner
+        bannerSize="fullBanner"
+        adUnitID={
+          Platform.OS == "ios" ? config2.iosAdBanner : config2.androidAdBanner
+        }
+        servePersonalizedAds={false}
+        onDidFailToReceiveAdWithError={(e) => bannerError(e)}
+      />
+
         </ScrollView>
       </Screen>
     );
