@@ -4,7 +4,6 @@ import {
   Text,
   View,
   Modal,
-  ImageBackground,
   Image,
 } from "react-native";
 import { TouchableOpacity } from "react-native";
@@ -13,6 +12,10 @@ import colors from "../../config/colors";
 import * as Linking from "expo-linking";
 
 export default function MoreItemComponent({ title, content, urlPic, urlLink }) {
+//so, the more component, i know there is 2, one for monica and one for jaigoh
+//this component is a button, which dislays an ad, when clicked
+//gets info, and renderes it, as you can see from the paremeters ^^
+
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>

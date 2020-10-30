@@ -15,6 +15,8 @@ import { connect } from "react-redux";
 import TransactionComponent from "../components/accountsscreencomponents/TransactionComponent";
 
 class AccountsScreen extends Component {
+  //THIS COMONENT, IS BASICALLY, 
+  //THE CHECKING, SAVINGS, BECAUSE I DIDNT WANNA CREATE DIFFERENT COMPONENTS SINCE THEY BOTH HAD SIMILAR STRUCTURE
   constructor(props) {
     super(props);
 
@@ -31,6 +33,7 @@ class AccountsScreen extends Component {
   }
 
   depositModal = (value) => {
+    //FUNCTION THAT IS PASSED A VALUE TO SHOW OR NOT SHOW DEPOSIT MODAL
     this.setState({
       showDepositModal: value,
     });

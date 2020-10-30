@@ -13,6 +13,7 @@ export default function TransactionComponent({ data, style }) {
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
+          //This is how each item in the list looks
           <TransactionItem
             from={item.from}
             to={item.to}

@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Modal } from "react-native";
 import colors from "../config/colors";
 import AppButton from "./AppButton";
-import { TitleText } from "./TitleText";
 export default function AccountsCard({
   accountType,
   balance,
   onPress,
   accountNumber,
 }) {
+
+  //THIS FUNCTION BASICALLY IS THE ACCOUNT CARDS, ON THE MAIN SCREEN,
+  //DEPENDANT, ON THE CARD TYPE, THE EXPLANATION OF THE APPROPRIATE BANK WILL BE RENDERED, SO EX. THE LAST EXPLANATION IS ABOUT CREDIT CARDS
+  //SO IF THE ACCOUNT TYPE OR ACCOUNT NUMBER IS 5, I THINK, THAT ONE WILL BE RENDERED, I THINK 1 AND 2 WERE CHEKCINGS, AND 3 WAS SAVINGS
+  //ITS RENDERED IN THE LITTLE BOX NEXT TO EACH ACCOUNT TYPE
   const explainEachBank = [
     "",
     "A checking account is a deposit account held at a financial institution that allows withdrawals and deposits. Also called demand accounts or transactional accounts, checking accounts are very liquid and can be accessed using checks, automated teller machines, and electronic debits, among other methods. A checking account differs from other bank accounts in that it often allows for numerous withdrawals and unlimited deposits, whereas savings accounts sometimes limit both.",

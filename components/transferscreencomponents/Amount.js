@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import colors from "../../config/colors";
 
 export default function Amount(props) {
+  // this component, i this is for the amount you are transfering 
+  // or the amount you are depositing, or maybe its the main amount component, not sure lool
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>

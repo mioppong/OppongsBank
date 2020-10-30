@@ -10,7 +10,6 @@ import {
 import Icon from "../Icon";
 import colors from "../../config/colors";
 import PickerItem from "./PickerItem";
-import { BlurView } from "expo-blur";
 import AppButton from "../AppButton";
 
 export default function AccountPicker({
@@ -22,6 +21,10 @@ export default function AccountPicker({
   selectedItem,
   title,
 }) {
+
+  //this component takes a list of options, and when you click the main button,
+  // the options appear, and you can click them
+  //takes a list, and each item is rendered is PickerItem.js, so we need to import that here also
   const [modalVisible, setModalVisible] = useState(false);
 
   return (

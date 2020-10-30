@@ -6,6 +6,7 @@ import TitleText from "../components/TitleText";
 import AppButton from "../components/AppButton";
 
 export default class WelcomeScreen extends Component {
+  // WELCOME SCREN, NOTHING SERIOUS
   home = () => {
     const { navigation } = this.props;
     navigation.navigate("Home");

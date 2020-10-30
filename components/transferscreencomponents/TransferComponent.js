@@ -4,6 +4,12 @@ import colors from "../../config/colors";
 import AccountPicker from "./AccountPicker";
 
 export default function TransferComponent(props) {
+//This is the main container for the transfer component
+// the possible accounts you can transfer money are below in the variable in allAccounts
+//so when an item is selected, it is set here on this screen using one of the setSelected account methods
+//, so theres two pickers, one for the from account, and one for the to account
+
+
   const [selectedAccount1, setSelectedAccount1] = useState();
   const [selectedAccount2, setSelectedAccount2] = useState();
 

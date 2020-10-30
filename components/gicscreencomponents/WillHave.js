@@ -3,6 +3,9 @@ import { StyleSheet, Text, View } from "react-native";
 import colors from "../../config/colors";
 
 export default function WillHave({ date, amount }) {
+  //SO, FOR THE GIC SCREEN,
+  //THERE IS LIKE 9 SENTENCES, WHICH SAYS HOW MUCH YOU WILL MAKE X IN Y AMOUNT OF TIME,
+  //THIS COMPONENT DOES NOT CALCULATE BUT RENDERS HOW IT LOOKS
   return (
     <View style={styles.container}>
       <Text style={styles.mainText}>

@@ -4,6 +4,8 @@ import colors from "../../config/colors";
 import TitleText from "../TitleText";
 
 export default function CardComponent({ cardTitle, amount, onPress, style }) {
+  //SO FOR THE CARDS ON THE MAIN SCREEN, THESE ARE THE CARDS RENDERED
+  //THE 2 TYPES OF CARDS, ONE I USE IN IN THE GIC, (INTEREST RATE), AND THE ONES ON THE HOME SCREEN
   if (cardTitle === "Interest Rate") {
     return (
       <TouchableOpacity style={[styles.container, style]} onPress={onPress}>

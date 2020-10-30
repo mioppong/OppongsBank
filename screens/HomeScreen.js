@@ -187,14 +187,13 @@ class HomeScreen extends Component {
               totalOwe={this.state.totalOwe}
             />
           </View>
-           <AdMobBanner
-        bannerSize="fullBanner"
-        adUnitID={
-          Platform.OS == "ios" ? config2.iosAdBanner : config2.androidAdBanner
-        }
-        servePersonalizedAds={false}
-        onDidFailToReceiveAdWithError={(e) => this.bannerError(e)}
-      />
+           {/* <AdMobBanner
+            bannerSize="fullBanner"
+            adUnitID={
+            Platform.OS == "ios" ? config2.iosAdBanner : config2.androidAdBanner}
+            servePersonalizedAds={false}
+            onDidFailToReceiveAdWithError={(e) => this.bannerError(e)}
+          /> */}
         </ScrollView>
       </Screen>
     );

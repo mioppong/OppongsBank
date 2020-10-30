@@ -4,6 +4,9 @@ import colors from "../config/colors";
 import Icon from "./Icon";
 
 function AppButton({ style, iconSize, title, onPress, iconName }) {
+  //PROBABLY WILL BE REUSING THIS COMPONENT ALOT LOOL,
+  //THIS FUNCTION TAKES AN ARG WHICH WILL BE NAME, SIZE BLABLA, AND RENDER THAT 
+  //ICON IF IT EXIST FROM MaterialCommunityIcons
   return (
     <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
       {iconName && (

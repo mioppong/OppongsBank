@@ -3,6 +3,9 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import colors from "../../config/colors";
 
 export default function TransactionItem({ from, to, amount, type, payee }) {
+  //DEPENDENT OF THE TYPE OF TRANSACTION, IT IS RENDERED DIFFERENTLY
+  // WE GET A TYPE, E.G TRANSFER, AND I KNOW WHICH PARAMETERS IT HAS, AND ARGS THAT ARE PASSED TO IT
+  //SO I RENDER ITS TYPE, AND YEA...
   amount = parseInt(amount).toLocaleString(undefined, {
     minimumFractionDigits: 2,
   });
@@ -41,6 +44,7 @@ export default function TransactionItem({ from, to, amount, type, payee }) {
       </View>
     );
   } else if (type === "DEPOSIT") {
+    //IF THE TYPE IS DEPOSIT, THIS IS HOW IT LOOKS
     return (
       <View style={styles.mainContainer}>
         <View>
@@ -71,6 +75,7 @@ export default function TransactionItem({ from, to, amount, type, payee }) {
       </View>
     );
   } else if (type === "PURCHASE") {
+    //IF IT IS A PURCHASE, THIS IS HOW IT LOOKS
     return (
       <View style={styles.mainContainer}>
         <View>
@@ -110,7 +115,6 @@ const styles = StyleSheet.create({
     height: 60,
     flexDirection: "row",
     justifyContent: "space-between",
-    //alignItems: "center",
     flex: 1,
   },
   coolLine: {

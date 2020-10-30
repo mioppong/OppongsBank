@@ -9,6 +9,7 @@ import AppButton from "../components/AppButton";
 import { connect } from "react-redux";
 
 class TransferScreen extends Component {
+  ///TRANSFER SCREEN
   constructor(props) {
     super(props);
 

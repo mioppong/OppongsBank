@@ -12,6 +12,8 @@ import GICScreen from "../screens/GICScreen";
 import Icon from "../components/Icon";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
+
+//THIS IS UGLY, I HOPE TO USE REACT NAVIGATION 5 FROM NOW ON, ANYTHING BELOW IS STILL NOT THAT BAD, JUST KINDA UGGLY
 const accScreens = {
   Home: {
     screen: HomeScreen,

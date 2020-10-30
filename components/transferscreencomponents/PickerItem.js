@@ -1,9 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { TouchableOpacity } from "react-native";
 import colors from "../../config/colors";
 
 export default function PickerItem({ label, onPress }) {
+
+  // i think this is the item, which is rendered in the list of items to pick
+  //so this component is each item in the list of choosable items
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <Text style={styles.text}>{label}</Text>
