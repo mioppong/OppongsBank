@@ -30,8 +30,7 @@ export default class MoreScreen extends Component {
         title: "Monica Guzman",
         content:
           "This is a promo for my amiga Monica Guzman, who makes music, Search on Apple Music, SoundCloud, Spotify and Youtube 'Monica Guzman' or click the button below the image'",
-        urlPic:
-          "https://instagram.fymy1-1.fna.fbcdn.net/v/t51.2885-15/e35/72308594_561869707949383_9188217833705983893_n.jpg?_nc_ht=instagram.fymy1-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=Tg9lxEWDiroAX9GVBzm&oh=d11ab037ebf4794b990977c88112d260&oe=5F5F2E15",
+        urlPic: "https://m.media-amazon.com/images/I/61B3t+oXXpL._SS500_.jpg",
         urlLink: "https://www.instagram.com/_monicaguzman_/",
       },
     ];

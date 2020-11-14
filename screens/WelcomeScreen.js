@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
@@ -16,9 +16,17 @@ export default class WelcomeScreen extends Component {
     return (
       <Screen style={styles.mainContainer}>
         <View style={styles.titleContainer}>
+          <Image
+            source={require("../assets/logo1.png")}
+            style={{
+              width: 100,
+              height: 100,
+              borderRadius: 25,
+            }}
+          />
           <TitleText
             style={{ textAlign: "center", fontWeight: "900" }}
-            title="Oppongs Fake"
+            title="Fake"
           />
           <TitleText
             style={{ textAlign: "center", fontWeight: "900" }}
