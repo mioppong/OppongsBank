@@ -4,7 +4,14 @@ const DEPOSIT = "DEPOSIT";
 const PURCHASE = "PURCHASE";
 
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Modal, TextInput } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Modal,
+  TextInput,
+  Platform,
+} from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
@@ -13,9 +20,11 @@ import Icon from "../components/Icon";
 import { TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import TransactionComponent from "../components/accountsscreencomponents/TransactionComponent";
+import { AdMobBanner } from "expo-ads-admob";
+import config2 from "../config";
 
 class AccountsScreen extends Component {
-  //THIS COMONENT, IS BASICALLY, 
+  //THIS COMONENT, IS BASICALLY,
   //THE CHECKING, SAVINGS, BECAUSE I DIDNT WANNA CREATE DIFFERENT COMPONENTS SINCE THEY BOTH HAD SIMILAR STRUCTURE
   constructor(props) {
     super(props);
@@ -175,6 +184,16 @@ class AccountsScreen extends Component {
 
             <TransactionComponent data={params.transactions} />
           </View>
+          <AdMobBanner
+            bannerSize="fullBanner"
+            adUnitID={
+              Platform.OS == "ios"
+                ? config2.iosAdBanner
+                : config2.androidAdBanner
+            }
+            servePersonalizedAds={false}
+            onDidFailToReceiveAdWithError={(e) => this.bannerError(e)}
+          />
         </Screen>
 
         {/*---------SHOW DEPOSIT MODAL--------------------------------------------------------------------------------------------------- */}

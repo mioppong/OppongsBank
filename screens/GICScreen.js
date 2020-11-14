@@ -11,6 +11,7 @@ import {
   ScrollView,
   Modal,
   TextInput,
+  Platform,
 } from "react-native";
 import { connect } from "react-redux";
 import Screen from "../components/Screen";
@@ -21,6 +22,8 @@ import CardComponent from "../components/gicscreencomponents/CardComponent";
 import WillHave from "../components/gicscreencomponents/WillHave";
 import TransactionComponent from "../components/accountsscreencomponents/TransactionComponent";
 import AppButton from "../components/AppButton";
+import { AdMobBanner } from "expo-ads-admob";
+import config2 from "../config";
 
 class GICScreen extends Component {
   constructor(props) {
@@ -161,9 +164,20 @@ class GICScreen extends Component {
             style={{
               borderRadius: 10,
               alignSelf: "center",
-              marginTop: 30,
+              margin: 25,
             }}
             onPress={() => this.setState({ showTransactions: true })}
+          />
+
+          <AdMobBanner
+            bannerSize="fullBanner"
+            adUnitID={
+              Platform.OS == "ios"
+                ? config2.iosAdBanner
+                : config2.androidAdBanner
+            }
+            servePersonalizedAds={false}
+            onDidFailToReceiveAdWithError={(e) => this.bannerError(e)}
           />
         </ScrollView>
 
@@ -247,6 +261,16 @@ class GICScreen extends Component {
                 iconName="check-bold"
                 iconSize={40}
                 style={{ alignSelf: "center", height: 50, width: 50 }}
+              />
+              <AdMobBanner
+                bannerSize="fullBanner"
+                adUnitID={
+                  Platform.OS == "ios"
+                    ? config2.iosAdBanner
+                    : config2.androidAdBanner
+                }
+                servePersonalizedAds={false}
+                onDidFailToReceiveAdWithError={(e) => this.bannerError(e)}
               />
             </View>
           </View>

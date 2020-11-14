@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { StyleSheet, View, ScrollView, Image, Modal } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  Image,
+  Modal,
+  Platform,
+} from "react-native";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import TitleText from "../components/TitleText";
@@ -7,6 +14,8 @@ import TransferComponent from "../components/transferscreencomponents/TransferCo
 import Amount from "../components/transferscreencomponents/Amount";
 import AppButton from "../components/AppButton";
 import { connect } from "react-redux";
+import { AdMobBanner } from "expo-ads-admob";
+import config2 from "../config";
 
 class TransferScreen extends Component {
   ///TRANSFER SCREEN
@@ -99,6 +108,18 @@ class TransferScreen extends Component {
                 iconSize={45}
               />
             </View>
+
+            <AdMobBanner
+              style={{ marginTop: "50%" }}
+              bannerSize="fullBanner"
+              adUnitID={
+                Platform.OS == "ios"
+                  ? config2.iosAdBanner
+                  : config2.androidAdBanner
+              }
+              servePersonalizedAds={false}
+              onDidFailToReceiveAdWithError={(e) => this.bannerError(e)}
+            />
           </ScrollView>
         </Screen>
 

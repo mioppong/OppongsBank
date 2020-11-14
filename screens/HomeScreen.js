@@ -7,7 +7,7 @@ import AccountsCard from "../components/AccountsCard";
 import BankSummaryComponent from "../components/BankSummaryComponent";
 import { connect } from "react-redux";
 import { AdMobBanner } from "expo-ads-admob";
-import config2 from '../config'
+import config2 from "../config";
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -21,7 +21,6 @@ class HomeScreen extends Component {
     const { navigation } = this.props;
 
     navigation.addListener("willFocus", () => {
-      
       let totalHave =
         (this.props.checking1.balance > 0 ? this.props.checking1.balance : 0) +
         (this.props.checking2.balance > 0 ? this.props.checking2.balance : 0) +
@@ -53,9 +52,9 @@ class HomeScreen extends Component {
       });
     });
   }
-  bannerError = (e) =>{
-    console.log(e)
-  }
+  bannerError = (e) => {
+    console.log(e);
+  };
 
   accountPressedHandler = (args) => {
     const { navigation } = this.props;
@@ -94,7 +93,6 @@ class HomeScreen extends Component {
         break;
     }
   };
-
 
   render() {
     let formatedChecking1 = parseInt(
@@ -187,13 +185,16 @@ class HomeScreen extends Component {
               totalOwe={this.state.totalOwe}
             />
           </View>
-           {/* <AdMobBanner
+          <AdMobBanner
             bannerSize="fullBanner"
             adUnitID={
-            Platform.OS == "ios" ? config2.iosAdBanner : config2.androidAdBanner}
+              Platform.OS == "ios"
+                ? config2.iosAdBanner
+                : config2.androidAdBanner
+            }
             servePersonalizedAds={false}
             onDidFailToReceiveAdWithError={(e) => this.bannerError(e)}
-          /> */}
+          />
         </ScrollView>
       </Screen>
     );
