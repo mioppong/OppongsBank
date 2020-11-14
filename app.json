@@ -25,7 +25,7 @@
         "description": "This is a bank for educational purposes",
         "android": {
             "versionCode": 5,
-            "package": "com.oppongstudios.fakebank"
+            "package": "com.its_oppong_studios.OppongsBank"
         }
     }
 }
